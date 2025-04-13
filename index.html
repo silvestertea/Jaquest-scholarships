@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,73 +22,74 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      padding-bottom: 120px;
-    }
-    .floating {
-      animation: float 3s ease-in-out infinite;
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; padding-bottom: 120px; }
+    .floating { animation: float 3s ease-in-out infinite; }
     @keyframes float {
       0% { transform: translatey(0px); }
       50% { transform: translatey(-10px); }
       100% { transform: translatey(0px); }
     }
     .chat-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 10000;
-      background-color: #2563eb;
-      color: white;
-      font-size: 24px;
-      padding: 0.75rem;
-      border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    background-color: #2563eb;
+    color: white;
+    font-size: 24px;
+    padding: 0.75rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .chat-toggle:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.1); /* Slight zoom effect */
+  }
+
+  .chat-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.5); /* Focus ring for accessibility */
+  }
+
+  .chat-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    z-index: 9999;
+    width: 350px;
+    height: 500px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+    background-color: white;
+  }
+
+  .chat-iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 16px;
+  }
+
+  /* Responsive Design for Chat Toggle */
+  @media (max-width: 768px) {
+    .chat-toggle {
+      bottom: 15px;
+      right: 15px;
+      font-size: 20px; /* Smaller font size */
+      padding: 0.5rem; /* Smaller padding */
     }
-    .chat-toggle:hover {
-      background-color: #1d4ed8;
-    }
-    .chat-toggle::after {
-      content: "Chat with us";
-      position: absolute;
-      bottom: 120%;
-      right: 0;
-      background: #1d4ed8;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .chat-toggle:hover::after {
-      opacity: 1;
-    }
+
     .chat-container {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      z-index: 9999;
-      width: 350px;
-      height: 500px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      display: none;
+      width: 90%; /* Full width for smaller screens */
+      height: 400px; /* Adjusted height */
+      right: 5%; /* Centered horizontally */
     }
-    @media (max-width: 768px) {
-      .chat-container {
-        width: 90%;
-        height: 400px;
-        right: 5%;
-      }
-    }
+  }
     .video-bg {
       position: absolute;
       top: 0;
@@ -97,187 +99,291 @@
       object-fit: cover;
       z-index: -1;
     }
-    .video-overlay {
+    <style>
+      <style>
+  .mobile-hero {
+    background-image: url('https://source.unsplash.com/1600x900/?students,university');
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    width: 100%; /* Full width */
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)); /* Gradient overlay */
+    z-index: 0;
+  }
+
+  .hero-content {
+    z-index: 10;
+    max-width: 700px;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    animation: fadeIn 2s ease-in-out; /* Fade-in animation */
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #2563eb, #1d4ed8);
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hero-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  .floating {
+    animation: float 3s ease-in-out infinite; /* Floating effect */
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+    #imageContainer {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+    }
+    button {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom right, rgba(0, 0, 50, 0.5), rgba(0, 0, 0, 0.7));
-      z-index: -1;
+      top: 50%;
+      z-index: 10;
+      font-size: 24px;
     }
+    button:hover {
+      background-color: #0056b3;
+      position: absolute;
+    }
+    #leftArrow { left: 10px; }
+    #rightArrow { right: 10px; }
     .hero-content {
-      position: relative;
-      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    @media (max-width: 768px) {
-      .video-bg {
-        display: none;
-      }
-      .video-overlay {
-        display: none;
-      }
-      .mobile-hero {
-        background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.justdial.com%2FFatehgarh-Sahib%2FDesh-Bhagat-University-Mandigobindgarh%2F9999P1763-1763-191231190759-Q2L6_BZDET&psig=AOvVaw3t2fpGa14JOSGxqDyT_c9X&ust=1744621003678000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNDmtfPR1IwDFQAAAAAdAAAAABAK');
-        background-size: cover;
-        background-position: center;
-      }
-    }
+    section { background-color: transparent; }
+    .bg-f5faff { background-color: #f5faff; }
+    .bg-white { background-color: transparent; }
+    .bg-gray-100 { background-color: transparent;
+     }
   </style>
 </head>
 <body class="bg-[#f5deb3] text-gray-800">
+ <!-- Loading Screen -->
   <div id="loading-screen" class="fixed inset-0 bg-[#f5deb3] z-[9999] flex items-center justify-center">
-    <div class="text-center animate__animated animate__fadeOut animate__delay-2s">
-      <img src="logo.png" alt="JaQuest Logo" class="h-16 w-16 mx-auto mb-4 animate-bounce" />
-      <h1 class="text-xl font-bold text-blue-700 animate-pulse">Loading JaQuest...</h1>
+    <div class="text-center animate__animated animate__fadeIn animate__delay-1s">
+      <img src="jaquest.png" alt="JaQuest Logo" class="h-16 w-16 mx-auto mb-4 animate-bounce" />
+      <h1 class="text-xl font-bold text-blue-700 animate-pulse">Loading JaQuest...</h1>     
     </div>
-  </div>
-
+    </div>
+  <!-- JavaScript to fade out loading screen -->
   <script>
     window.addEventListener('load', () => {
       const loader = document.getElementById('loading-screen');
+      loader.classList.remove('animate__fadeIn');
       loader.classList.add('animate__fadeOut');
       setTimeout(() => loader.style.display = 'none', 2000);
     });
   </script>
 
-<!-- Rest of your content here... (unchanged) --> <nav class="hidden md:flex gap-8 text-white text-sm font-medium">
-        <a href="#services" class="hover:text-yellow-200">Services</a>
-        <a href="#testimonials" class="hover:text-yellow-200">Testimonials</a>
-        <a href="#admissions" class="hover:text-yellow-200">Admissions</a>
-        <a href="#resources" class="hover:text-yellow-200">Resources</a>
-        <a href="#contact" class="hover:text-yellow-200">Contact</a>
-      </nav>
-      <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });" class="md:block hidden bg-white text-blue-600 px-4 py-2 rounded-full hover:scale-105 transition">Get Started</button>
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-blue-600 text-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-24">
+        <div class="flex items-center">
+          <img src="jaquest.png" alt="JaQuest Logo" class="h-16 w-16 rounded-full mr-4" />
+          <span class="text-2xl font-bold">JaQuest</span>
+        </div>
+        <div class="hidden md:flex space-x-6 text-lg">
+          <a href="#about" class="hover:bg-blue-700 px-4 py-2 rounded-md">About</a>
+          <a href="#programs" class="hover:bg-blue-700 px-4 py-2 rounded-md">Programs</a>
+          <a href="#apply" class="hover:bg-blue-700 px-4 py-2 rounded-md">Apply</a>
+          <a href="#contact" class="hover:bg-blue-700 px-4 py-2 rounded-md">Contact</a>
+        </div>
+      </div>
     </div>
-  </header>
+  </nav>
+  <div class="pt-28"></div>
 
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center mobile-hero">
-    <video autoplay muted loop playsinline class="video-bg">
-      <source src="/mnt/data/20250413-0748-41.0593681.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay"></div>
-    <div class="hero-content text-center p-6 max-w-xl animate__animated animate__fadeInUp">
-      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 floating animate__animated animate__bounceInDown">Unlock Global Opportunities</h1>
-      <p class="text-lg text-gray-200 mb-6 animate__animated animate__fadeInUp">Helping students secure fully funded scholarships and tuition waivers.</p>
-      <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });" class="text-lg px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition hover:scale-110 animate__animated animate__pulse animate__infinite">Get Started</button>
+  <section class="relative flex items-center justify-center mobile-hero">
+    <div class="absolute inset-0">
+      <video autoplay muted loop playsinline class="video-bg">
+        <source src="https://example.com/your-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+    <div class="hero-content text-center p-6 max-w-3xl z-10 flex flex-col items-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-white animate__animated animate__fadeInDown">
+        Unlock Global Opportunities
+      </h1>
+      <p class="text-lg md:text-xl text-gray-200 mb-8 animate__animated animate__fadeInUp">
+        Helping students secure fully funded scholarships and tuition waivers to achieve their dreams.
+      </p>
+      <div class="flex flex-col md:flex-row gap-4">
+        <a href="#about" class="hero-button bg-transparent border border-white text-white hover:bg-white hover:text-blue-900">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+  <section id="apply" class="py-20 bg-white text-center">
+    <h2 class="text-3xl font-bold text-blue-700 mb-4">Ready to Apply?</h2>
+    <p class="mb-6 text-gray-700">Start your journey toward international education today.</p>
+    <a href="form.html" class="inline-block px-8 py-3 bg-yellow-500 text-blue-900 font-semibold rounded-full hover:bg-yellow-600">Apply Now</a>
+  </section>  
+  <!-- Why Choose Us Section -->
+  <section id="why-choose" class="bg-white py-20 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-blue-700 mb-4" data-aos="fade-up">Why Choose JaQuest?</h2>
+      <p class="text-gray-600 text-lg md:text-xl mb-12" data-aos="fade-up" data-aos-delay="100">
+        Discover the unique advantages that set us apart in helping students achieve their global academic dreams.
+      </p>
+      <div class="grid gap-10 md:grid-cols-3">
+        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500" data-aos="fade-right" data-aos-delay="200">
+          <div class="text-blue-600 text-4xl mb-4 floating">🎓</div>
+          <h3 class="text-xl font-semibold mb-2">Expert Scholarship Matching</h3>
+          <p class="text-gray-600">We connect you with the best-fit scholarships around the globe, increasing your chances of financial support.</p>
+        </div>
+        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-blue-600 text-4xl mb-4 floating">🌍</div>
+          <h3 class="text-xl font-semibold mb-2">Global Network Access</h3>
+          <p class="text-gray-600">Gain access to a global network of universities, mentors, and alumni ready to support your journey.</p>
+        </div>
+        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500" data-aos="fade-left" data-aos-delay="400">
+          <div class="text-blue-600 text-4xl mb-4 floating">✈️</div>
+          <h3 class="text-xl font-semibold mb-2">Visa & Application Guidance</h3>
+          <p class="text-gray-600">Our team supports you through every step of the admissions and visa process with ease and confidence.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Original content continues below (unchanged)... -->
-  <!-- Photo Showcase Section -->
-<section class="bg-white py-16" data-aos="fade-up">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center text-blue-700 mb-10">Meet Our Scholars</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="overflow-hidden rounded-xl shadow-lg">
-        <img src="https://source.unsplash.com/300x300/?student,portrait" alt="Scholar 1" class="w-full h-full object-cover" />
-      </div>
-      <div class="overflow-hidden rounded-xl shadow-lg">
-        <img src="https://source.unsplash.com/301x301/?graduate,student" alt="Scholar 2" class="w-full h-full object-cover" />
-      </div>
-      <div class="overflow-hidden rounded-xl shadow-lg">
-        <img src="https://source.unsplash.com/302x302/?young,scholar" alt="Scholar 3" class="w-full h-full object-cover" />
-      </div>
-      <div class="overflow-hidden rounded-xl shadow-lg">
-        <img src="https://source.unsplash.com/303x303/?education,success" alt="Scholar 4" class="w-full h-full object-cover" />
-      </div>
-    </div>
-  </div>
-</section>
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-white" data-aos="fade-up">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-blue-700 mb-12">Our Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <div class="p-6 rounded-xl shadow-lg bg-[#f5deb3] hover:shadow-2xl transition">
-            <h3 class="text-xl font-semibold mb-4 text-blue-800">Scholarship Search</h3>
-            <p>We help you find and apply for scholarships tailored to your profile and academic goals.</p>
-          </div>
-          <div class="p-6 rounded-xl shadow-lg bg-[#f5deb3] hover:shadow-2xl transition">
-            <h3 class="text-xl font-semibold mb-4 text-blue-800">Admissions Guidance</h3>
-            <p>Expert advice on school selection, application strategy, and document preparation.</p>
-          </div>
-          <div class="p-6 rounded-xl shadow-lg bg-[#f5deb3] hover:shadow-2xl transition">
-            <h3 class="text-xl font-semibold mb-4 text-blue-800">Visa Assistance</h3>
-            <p>Navigate the visa process smoothly with our personalized support and coaching.</p>
-          </div>
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 bg-white" data-aos="fade-up">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-blue-700 mb-12">What Our Students Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="p-6 bg-[#f5deb3] rounded-xl shadow-md">
+          <p class="text-gray-700 italic mb-4">"JaQuest helped me secure a full scholarship to study abroad. Their support was outstanding!"</p>
+          <h4 class="text-blue-800 font-semibold">– Grace A., Ghana</h4>
+        </div>
+        <div class="p-6 bg-[#f5deb3] rounded-xl shadow-md">
+          <p class="text-gray-700 italic mb-4">"From admissions to visa, everything was made easy thanks to JaQuest's expert guidance."</p>
+          <h4 class="text-blue-800 font-semibold">– Michael K., Kenya</h4>
         </div>
       </div>
-    </section>
-    <!-- Why Choose Us Section -->
-<section id="why-choose" class="bg-white py-20 px-6 md:px-12">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-blue-700 mb-4" data-aos="fade-up">Why Choose JaQuest?</h2>
-    <p class="text-gray-600 text-lg md:text-xl mb-12" data-aos="fade-up" data-aos-delay="100">
-      Discover the unique advantages that set us apart in helping students achieve their global academic dreams.
+    </div>
+  </section>
+   <!-- Courses Section -->
+<section id="courses" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-blue-700 mb-6">Our Courses</h2>
+    <p class="text-gray-600 text-lg mb-12">
+      Explore the wide range of courses we offer to help you achieve your academic and career goals.
     </p>
-
     <div class="grid gap-10 md:grid-cols-3">
-      <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500" data-aos="fade-right" data-aos-delay="200">
-        <div class="text-blue-600 text-4xl mb-4 floating">🎓</div>
-        <h3 class="text-xl font-semibold mb-2">Expert Scholarship Matching</h3>
-        <p class="text-gray-600">We connect you with the best-fit scholarships around the globe, increasing your chances of financial support.</p>
+      <!-- Course 1 -->
+      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
+      <h3 class="text-xl font-semibold mb-2 text-blue-800">Undergraduate Programs</h3>
+      <p class="text-gray-600">Get access to fully funded undergraduate programs in top universities worldwide.</p>
+    </div>
+      <!-- Course 2 -->
+      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Postgraduate Programs</h3>
+        <p class="text-gray-600">Pursue your master's or PhD with scholarships and mentorship from global experts.</p>
       </div>
-
-      <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500" data-aos="fade-up" data-aos-delay="300">
-        <div class="text-blue-600 text-4xl mb-4 floating">🌍</div>
-        <h3 class="text-xl font-semibold mb-2">Global Network Access</h3>
-        <p class="text-gray-600">Gain access to a global network of universities, mentors, and alumni ready to support your journey.</p>
+      <!-- Course 3 -->
+      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Short-Term Certifications</h3>
+        <p class="text-gray-600">Enhance your skills with short-term certification courses in various fields.</p>
       </div>
-
-      <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500" data-aos="fade-left" data-aos-delay="400">
-        <div class="text-blue-600 text-4xl mb-4 floating">✈️</div>
-        <h3 class="text-xl font-semibold mb-2">Visa & Application Guidance</h3>
-        <p class="text-gray-600">Our team supports you through every step of the admissions and visa process with ease and confidence.</p>
+      <!-- Course 4 -->
+      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Language Proficiency</h3>
+        <p class="text-gray-600">Prepare for IELTS, TOEFL, and other language proficiency exams with expert guidance.</p>
+      </div>
+      <!-- Course 5 -->
+      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Professional Development</h3>
+        <p class="text-gray-600">Advance your career with professional development courses tailored to your needs.</p>
+      </div>
+      <!-- Course 6 -->
+      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">STEM Programs</h3>
+        <p class="text-gray-600">Join cutting-edge STEM programs and gain hands-on experience in science and technology.</p>
+      
       </div>
     </div>
   </div>
 </section>
-
-<!-- Testimonials Section -->
-<section id="testimonials" class="py-20 bg-white" data-aos="fade-up">
-  <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center text-blue-700 mb-12">What Our Students Say</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="p-6 bg-[#f5deb3] rounded-xl shadow-md">
-        <p class="text-gray-700 italic mb-4">"JaQuest helped me secure a full scholarship to study abroad. Their support was outstanding!"</p>
-        <h4 class="text-blue-800 font-semibold">– Grace A., Ghana</h4>
+   <!-- Dashboard Section -->
+<section id="dashboards" class="py-20 bg-gray-100">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-blue-700 mb-6">Dashboards</h2>
+    <p class="text-gray-600 text-lg mb-12">
+      Access your personalized dashboards for managing your journey with JaQuest.
+    </p>
+    <div class="grid gap-10 md:grid-cols-2">
+      <!-- Student Dashboard -->
+      <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Student Dashboard</h3>
+        <p class="mb-4">Access your scholarship applications, documents, and progress tracking.</p>
+        <a href="https://jaquest.online/student-dashboard" target="_blank" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Dashboard</a>
       </div>
-      <div class="p-6 bg-[#f5deb3] rounded-xl shadow-md">
-        <p class="text-gray-700 italic mb-4">"From admissions to visa, everything was made easy thanks to JaQuest's expert guidance."</p>
-        <h4 class="text-blue-800 font-semibold">– Michael K., Kenya</h4>
+      <!-- Admin Dashboard -->
+      <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Admin Dashboard</h3>
+        <p class="mb-4">Manage student records, applications, and review statuses.</p>
+        <a href="https://jaquest.online/admin-dashboard" target="_blank" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Admin</a>
       </div>
     </div>
   </div>
+   <!-- Contact Section -->
+ <section id="contact" class="bg-[#f5faff] py-20 px-6 md:px-12">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-blue-700 mb-6">Get in Touch</h2>
+    <p class="text-gray-700 mb-8">Reach out to us for personalized assistance with your application journey.</p>
+    <a href="mailto:info@jaquest.online" class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full">Email Us</a>
+  </div>
 </section>
-    <!-- Dashboard Section -->
-    <section class="py-20 bg-[#f5deb3]" data-aos="fade-up">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-blue-700 mb-12">Dashboards</h2>
-        <div class="flex flex-col md:flex-row justify-center gap-8">
-          <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition">
-            <h3 class="text-xl font-semibold mb-2 text-blue-800">Student Dashboard</h3>
-            <p class="mb-4">Access your scholarship applications, documents, and progress tracking.</p>
-            <a href="https://jaquest.online/student-dashboard" target="_blank" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Dashboard</a>
-          </div>
-          <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition">
-            <h3 class="text-xl font-semibold mb-2 text-blue-800">Admin Dashboard</h3>
-            <p class="mb-4">Manage student records, applications, and review statuses.</p>
-            <a href="https://jaquest.online/admin-dashboard" target="_blank" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Admin</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="py-20 bg-white" data-aos="fade-up">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold text-blue-700 mb-6">Contact Us</h2>
-        <p class="mb-4 text-gray-700">Have questions or ready to begin your journey? We'd love to hear from you!</p>
-        <a href="mailto:info@jaquest.online" class="inline-block mt-4 bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition">Email Us</a>
-      </div>
-    </section>
-  </main>
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-400 py-10 text-center text-sm" data-aos="fade-up">
     <div class="flex justify-center gap-6 mb-4">
@@ -287,23 +393,31 @@
     </div>
     <p>&copy; 2025 JaQuest Scholarship Agency. All rights reserved.</p>
   </footer>
+
   <!-- AOS Animation Init -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
   </script>
-
-  <!-- Live Chat Toggle Button + Chat Iframe -->
   <div class="chat-toggle" onclick="toggleChat()">💬</div>
-  <div class="chat-container" id="chatBox">
-    <iframe src="https://www.tawk.to/chat/64d4b9fa94cf5d49dc6ba8a9/1h6v1sn7e" width="100%" height="100%" style="border:0; border-radius:16px;"></iframe>
+  <div class="chat-container" id="chatContainer">
+    <iframe class="chat-iframe" src="https://example.com/chatbot"></iframe>
   </div>
+  
   <script>
     function toggleChat() {
-      const chatBox = document.getElementById('chatBox');
-      chatBox.style.display = chatBox.style.display === 'none' || chatBox.style.display === '' ? 'block' : 'none';
+      const chat = document.getElementById('chatContainer');
+      chat.style.display = (chat.style.display === 'none' || chat.style.display === '') ? 'block' : 'none';
     }
   </script>
+  <!-- AOS Animation Init -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+    AOS.init();
+  </script>
+  </footer>
 </body>
 </html>
+
 
