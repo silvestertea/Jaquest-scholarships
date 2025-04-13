@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Application Form - JaQuest</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    .float-label input:focus ~ label,
+    .float-label input:not(:placeholder-shown) ~ label,
+    .float-label textarea:focus ~ label,
+    .float-label textarea:not(:placeholder-shown) ~ label {
+      transform: translateY(-1.5rem) scale(0.85);
+      color: #6366f1;
+    }
+
+    .float-label label {
+      transition: all 0.2s ease;
+      pointer-events: none;
+      position: absolute;
+      left: 0.75rem;
+      top: 0.75rem;
+      background-color: white;
+      padding: 0 0.25rem;
+    }
+
+    .section-title {
+      @apply text-xl font-semibold text-indigo-600 border-b pb-2 mb-4;
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      animation: fade-up 0.6s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="max-w-5xl mx-auto p-6 mt-12 bg-white rounded-2xl shadow-2xl fade-up">
+    <h1 class="text-3xl font-bold text-center text-indigo-700 mb-2">Fill And Submit Your Application</h1>
+    <p class="text-center text-gray-600 mb-10">
+Use this form to submit your application for study abroad consultation, scholarship guidance, visa assistance, or university admission processing. Ensure you provide accurate details and upload the necessary documents, including your passport copy, academic transcripts, and any other supporting documents. Our team will review your application and get back to you as soon as possible.
+
+    <form class="space-y-10">
+
+      <!-- Personal Info -->
+      <div>
+        <h2 class="section-title">Personal Information</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="relative float-label">
+            <input type="text" name="student_name" placeholder=" " required class="w-full border px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <label>Student's Name</label>
+          </div>
+
+          <div class="relative float-label">
+            <input type="email" name="email" placeholder=" " required class="w-full border px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <label>Email Address</label>
+          </div>
+
+          <div class="relative float-label">
+            <input type="date" name="dob" placeholder=" " required class="w-full border px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <label>Date of Birth</label>
+          </div>
+
+          <div class="relative float-label">
+            <input type="text" name="country" placeholder=" " required class="w-full border px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <label>Country</label>
+          </div>
+
+          <div class="relative float-label">
+            <input type="text" name="phone" placeholder=" " required class="w-full border px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <label>Phone Number</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parental Info -->
+      <div>
+        <h2 class="section-title">Parent/Guardian Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="relative float-label">
+            <input type="text" name="parent_name" placeholder=" " required class="w-full border px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <label>Parent's Name</label>
+          </div>
+
+          <div class="relative float-label">
+            <input type="text" name="parent_contact" placeholder=" " required class="w-full border px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <label>Parent's Contact</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Academic & Referral -->
+      <div>
+        <h2 class="section-title">Academic Info & Referral</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="relative float-label">
+            <input type="text" name="referred_by" placeholder=" " class="w-full border px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <label>Referred By (Name)</label>
+          </div>
+
+          <div class="relative float-label">
+            <textarea name="message" placeholder=" " rows="3" class="w-full border px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+            <label>Message</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uploads -->
+      <div>
+        <h2 class="section-title">Document Uploads</h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block mb-1 font-medium">Upload Passport Copy</label>
+            <input type="file" name="passport" required class="w-full"/>
+          </div>
+
+          <div>
+            <label class="block mb-1 font-medium">Upload Academic Transcripts</label>
+            <input type="file" name="transcripts" required class="w-full"/>
+          </div>
+
+          <div>
+            <label class="block mb-1 font-medium">Upload Other Supporting Documents</label>
+            <input type="file" name="other_documents" class="w-full"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center mt-8">
+        <button type="submit" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-xl text-lg font-semibold hover:bg-indigo-700 transition-all duration-300 shadow-md">
+          <i class="ph ph-paper-plane-tilt"></i>
+          Submit Application
+        </button>
+      </div>
+
+    </form>
+  </div>
+</body>
+</html>
