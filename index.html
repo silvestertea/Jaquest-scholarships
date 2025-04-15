@@ -6,210 +6,176 @@
   <meta name="description" content="JaQuest helps students unlock global opportunities through scholarships, admissions support, and visa assistance." />
   <meta name="keywords" content="scholarships, study abroad, visa assistance, education agency, JaQuest" />
   <meta name="author" content="JaQuest Scholarship Agency" />
-
-  <!-- ✨ Social Media Preview -->
   <meta property="og:title" content="JaQuest Scholarship Agency" />
   <meta property="og:description" content="Get access to scholarships, mentorship, and admissions support with JaQuest." />
   <meta property="og:image" content="https://example.com/jaquest.png" />
   <meta property="og:url" content="https://yourdomain.com" />
   <meta name="twitter:card" content="summary_large_image" />
-
   <title>JaQuest Scholarship Agency</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; padding-bottom: 120px; }
-    .floating { animation: float 3s ease-in-out infinite; }
-    @keyframes float {
-      0% { transform: translatey(0px); }
-      50% { transform: translatey(-10px); }
-      100% { transform: translatey(0px); }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
     }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
     .chat-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10000;
-    background-color: #2563eb;
-    color: white;
-    font-size: 24px;
-    padding: 0.75rem;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10000;
+      background-color: #2563eb;
+      color: white;
+      font-size: 24px;
+      padding: 0.75rem;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-  .chat-toggle:hover {
-    background-color: #1d4ed8;
-    transform: scale(1.1); /* Slight zoom effect */
-  }
-
-  .chat-toggle:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.5); /* Focus ring for accessibility */
-  }
-
-  .chat-container {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    z-index: 9999;
-    width: 350px;
-    height: 500px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    display: none;
-    background-color: white;
-  }
-
-  .chat-iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    border-radius: 16px;
-  }
-
-  /* Responsive Design for Chat Toggle */
-  @media (max-width: 768px) {
-    .chat-toggle {
-      bottom: 15px;
-      right: 15px;
-      font-size: 20px; /* Smaller font size */
-      padding: 0.5rem; /* Smaller padding */
+    .chat-toggle:hover {
+      background-color: #1d4ed8;
+      transform: scale(1.1);
     }
 
     .chat-container {
-      width: 90%; /* Full width for smaller screens */
-      height: 400px; /* Adjusted height */
-      right: 5%; /* Centered horizontally */
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      z-index: 9999;
+      width: 350px;
+      height: 500px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      display: block;
+      background-color: white;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
-  }
-    .video-bg {
+
+    .chat-container.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .chat-iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .chat-toggle {
+        bottom: 15px;
+        right: 15px;
+        font-size: 20px;
+        padding: 0.5rem;
+      }
+
+      .chat-container {
+        width: 90%;
+        height: 400px;
+        right: 5%;
+      }
+    }
+
+    .mobile-hero {
+      background-image: url('https://source.unsplash.com/1600x900/?students,university');
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+      z-index: 0;
+    }
+
+    .video-bg {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
       z-index: -1;
     }
-  .mobile-hero {
-    background-image: url('https://source.unsplash.com/1600x900/?students,university');
-    background-size: cover;
-    background-position: center;
-    height: 70vh;
-    width: 100%; /* Full width */
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)); /* Gradient overlay */
-    z-index: 0;
-  }
 
-  .hero-content {
-    z-index: 10;
-    max-width: 700px;
-    text-align: center;
-    padding: 20px;
-    color: white;
-    animation: fadeIn 2s ease-in-out; /* Fade-in animation */
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(to right, #2563eb, #1d4ed8);
-    border: none;
-    border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .hero-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-  }
-
-  .floating {
-    animation: float 3s ease-in-out infinite; /* Floating effect */
-  }
-
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
-  }
-    #imageContainer {
-      display: flex;
-      transition: transform 0.3s ease-in-out;
-    }
-    button {
-      position: absolute;
-      top: 50%;
-      z-index: 10;
-      font-size: 24px;
-    }
-    button:hover {
-      background-color: #0056b3;
-      position: absolute;
-    }
-    #leftArrow { left: 10px; }
-    #rightArrow { right: 10px; }
     .hero-content {
-      max-width: 600px;
-      margin: 0 auto;
+      z-index: 10;
+      max-width: 700px;
+      text-align: center;
+      padding: 20px;
+      color: white;
+      animation: fadeIn 2s ease-in-out;
     }
-    section { background-color: transparent; }
-    .bg-f5faff { background-color: #f5faff; }
-    .bg-white { background-color: transparent; }
-    .bg-gray-100 { background-color: transparent;
-     }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
   </style>
 </head>
 <body class="bg-[#f5deb3] text-gray-800">
- <!-- Loading Screen -->
+  <!-- Loading Screen -->
   <div id="loading-screen" class="fixed inset-0 bg-[#f5deb3] z-[9999] flex items-center justify-center">
     <div class="text-center animate__animated animate__fadeIn animate__delay-1s">
       <img src="jaquest.png" alt="JaQuest Logo" class="h-16 w-16 mx-auto mb-4 animate-bounce" />
-      <h1 class="text-xl font-bold text-blue-700 animate-pulse">Loading JaQuest...</h1>     
+      <h1 class="text-xl font-bold text-blue-700 animate-pulse">Loading JaQuest...</h1>
     </div>
-    </div>
-  <!-- JavaScript to fade out loading screen -->
+  </div>
   <script>
     window.addEventListener('load', () => {
       const loader = document.getElementById('loading-screen');
@@ -261,11 +227,16 @@
       </div>
     </div>
   </section>
+
+  <!-- Apply CTA -->
   <section id="apply" class="py-20 bg-white text-center">
     <h2 class="text-3xl font-bold text-blue-700 mb-4">Ready to Apply?</h2>
     <p class="mb-6 text-gray-700">Start your journey toward international education today.</p>
-    <a href="form.html" class="inline-block px-8 py-3 bg-yellow-500 text-blue-900 font-semibold rounded-full hover:bg-yellow-600">Apply Now</a>
-  </section>  
+    <a href="form.html" class="inline-block px-8 py-3 bg-yellow-500 text-blue-900 font-semibold rounded-full hover:bg-yellow-600">
+      Apply Now
+    </a>
+  </section>
+
   <!-- Why Choose Us Section -->
   <section id="why-choose" class="bg-white py-20 px-6 md:px-12">
     <div class="max-w-6xl mx-auto text-center">
@@ -277,23 +248,23 @@
         <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500" data-aos="fade-right" data-aos-delay="200">
           <div class="text-blue-600 text-4xl mb-4 floating">🎓</div>
           <h3 class="text-xl font-semibold mb-2">Expert Scholarship Matching</h3>
-          <p class="text-gray-600">We connect you with the best-fit scholarships around the globe, increasing your chances of financial support.</p>
+          <p class="text-gray-600">We connect you with the best-fit scholarships around the globe.</p>
         </div>
         <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500" data-aos="fade-up" data-aos-delay="300">
           <div class="text-blue-600 text-4xl mb-4 floating">🌍</div>
           <h3 class="text-xl font-semibold mb-2">Global Network Access</h3>
-          <p class="text-gray-600">Gain access to a global network of universities, mentors, and alumni ready to support your journey.</p>
+          <p class="text-gray-600">Access a global network of universities, mentors, and alumni.</p>
         </div>
         <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500" data-aos="fade-left" data-aos-delay="400">
           <div class="text-blue-600 text-4xl mb-4 floating">✈️</div>
           <h3 class="text-xl font-semibold mb-2">Visa & Application Guidance</h3>
-          <p class="text-gray-600">Our team supports you through every step of the admissions and visa process with ease and confidence.</p>
+          <p class="text-gray-600">We guide you through every step of admissions and visa processes.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <!-- Testimonials -->
   <section id="testimonials" class="py-20 bg-white" data-aos="fade-up">
     <div class="max-w-5xl mx-auto px-6">
       <h2 class="text-3xl font-bold text-center text-blue-700 mb-12">What Our Students Say</h2>
@@ -309,115 +280,276 @@
       </div>
     </div>
   </section>
-   <!-- Courses Section -->
-<section id="courses" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold text-blue-700 mb-6">Our Courses</h2>
-    <p class="text-gray-600 text-lg mb-12">
-      Explore the wide range of courses we offer to help you achieve your academic and career goals.
-    </p>
-    <div class="grid gap-10 md:grid-cols-3">
-      <!-- Course 1 -->
-      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
-      <h3 class="text-xl font-semibold mb-2 text-blue-800">Undergraduate Programs</h3>
-      <p class="text-gray-600">Get access to fully funded undergraduate programs in top universities worldwide.</p>
+
+  <!-- Courses Section -->
+  <section id="courses" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6">Our Courses</h2>
+      <p class="text-gray-600 text-lg mb-12">Explore the wide range of courses we offer.</p>
+      <div class="grid gap-10 md:grid-cols-3">
+        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+          <h3 class="text-xl font-semibold mb-2 text-blue-800">Undergraduate Programs</h3>
+          <p class="text-gray-600">Access fully funded programs in top universities worldwide.</p>
+        </div>
+        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+          <h3 class="text-xl font-semibold mb-2 text-blue-800">Postgraduate Programs</h3>
+          <p class="text-gray-600">Pursue your master's or PhD with global support and mentorship.</p>
+        </div>
+        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+          <h3 class="text-xl font-semibold mb-2 text-blue-800">Short-Term Certifications</h3>
+          <p class="text-gray-600">Enhance your skills with short courses in various fields.</p>
+        </div>
+        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+          <h3 class="text-xl font-semibold mb-2 text-blue-800">Language Proficiency</h3>
+          <p class="text-gray-600">Prepare for IELTS, TOEFL, and more with expert coaching.</p>
+        </div>
+        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+          <h3 class="text-xl font-semibold mb-2 text-blue-800">Professional Development</h3>
+          <p class="text-gray-600">Advance your career with skill-based learning.</p>
+        </div>
+        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+          <h3 class="text-xl font-semibold mb-2 text-blue-800">STEM Programs</h3>
+          <p class="text-gray-600">Join cutting-edge STEM programs with hands-on training.</p>
+        </div>
+      </div>
     </div>
-      <!-- Course 2 -->
-      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
-        <h3 class="text-xl font-semibold mb-2 text-blue-800">Postgraduate Programs</h3>
-        <p class="text-gray-600">Pursue your master's or PhD with scholarships and mentorship from global experts.</p>
+  </section>
+ <!-- Enhanced Course Categories Section -->
+<div class="p-6 bg-gray-50">
+  <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Explore Course Categories</h2>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
+    <!-- Card Template -->
+    <!-- Duplicate and customize -->
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-cyan-100 rounded-full">
+        <i data-lucide="laptop" class="w-5 h-5 text-cyan-600"></i>
       </div>
-      <!-- Course 3 -->
-      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
-        <h3 class="text-xl font-semibold mb-2 text-blue-800">Short-Term Certifications</h3>
-        <p class="text-gray-600">Enhance your skills with short-term certification courses in various fields.</p>
+      <span class="text-sm font-semibold text-gray-800">Computer Eng & Sci</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-indigo-100 rounded-full">
+        <i data-lucide="settings" class="w-5 h-5 text-indigo-600"></i>
       </div>
-      <!-- Course 4 -->
-      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
-        <h3 class="text-xl font-semibold mb-2 text-blue-800">Language Proficiency</h3>
-        <p class="text-gray-600">Prepare for IELTS, TOEFL, and other language proficiency exams with expert guidance.</p>
+      <span class="text-sm font-semibold text-gray-800">Engineering</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-pink-100 rounded-full">
+        <i data-lucide="atom" class="w-5 h-5 text-pink-600"></i>
       </div>
-      <!-- Course 5 -->
-      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
-        <h3 class="text-xl font-semibold mb-2 text-blue-800">Professional Development</h3>
-        <p class="text-gray-600">Advance your career with professional development courses tailored to your needs.</p>
+      <span class="text-sm font-semibold text-gray-800">Applied Sciences</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-green-100 rounded-full">
+        <i data-lucide="globe" class="w-5 h-5 text-green-600"></i>
       </div>
-      <!-- Course 6 -->
-      <div class="bg-f5faff p-8 rounded-2xl shadow-lg transition hover:scale-105 duration-500">
-        <h3 class="text-xl font-semibold mb-2 text-blue-800">STEM Programs</h3>
-        <p class="text-gray-600">Join cutting-edge STEM programs and gain hands-on experience in science and technology.</p>
-      
+      <span class="text-sm font-semibold text-gray-800">Hospitality</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-yellow-100 rounded-full">
+        <i data-lucide="briefcase" class="w-5 h-5 text-yellow-600"></i>
       </div>
+      <span class="text-sm font-semibold text-gray-800">Business</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-purple-100 rounded-full">
+        <i data-lucide="badge-percent" class="w-5 h-5 text-purple-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Polytechnic</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-blue-100 rounded-full">
+        <i data-lucide="book-open" class="w-5 h-5 text-blue-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Liberal Education</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-lime-100 rounded-full">
+        <i data-lucide="heart-pulse" class="w-5 h-5 text-lime-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Allied Health</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-orange-100 rounded-full">
+        <i data-lucide="paintbrush" class="w-5 h-5 text-orange-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Fine Arts</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-rose-100 rounded-full">
+        <i data-lucide="drama" class="w-5 h-5 text-rose-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Performing Arts</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-teal-100 rounded-full">
+        <i data-lucide="leaf" class="w-5 h-5 text-teal-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Agriculture</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-red-100 rounded-full">
+        <i data-lucide="stethoscope" class="w-5 h-5 text-red-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Nursing</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-emerald-100 rounded-full">
+        <i data-lucide="brain" class="w-5 h-5 text-emerald-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Psychology</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-fuchsia-100 rounded-full">
+        <i data-lucide="scale" class="w-5 h-5 text-fuchsia-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Law</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-sky-100 rounded-full">
+        <i data-lucide="user-cog" class="w-5 h-5 text-sky-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Social Work</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-zinc-100 rounded-full">
+        <i data-lucide="glasses" class="w-5 h-5 text-zinc-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Education</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-amber-100 rounded-full">
+        <i data-lucide="ruler" class="w-5 h-5 text-amber-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Architecture</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-indigo-200 rounded-full">
+        <i data-lucide="cross" class="w-5 h-5 text-indigo-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Theology</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-gray-200 rounded-full">
+        <i data-lucide="newspaper" class="w-5 h-5 text-gray-700"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Journalism</span>
+    </div>
+
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-blue-200 rounded-full">
+        <i data-lucide="plane" class="w-5 h-5 text-blue-700"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Aviation</span>
     </div>
   </div>
-</section>
-   <!-- Dashboard Section -->
+
+  <div class="text-center">
+    <a href="/all-courses" class="inline-block px-6 py-3 text-sm font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition">
+      View All Courses
+    </a>
+  </div>
+</div>
+<!-- Load Lucide Icons -->
+<script>
+  lucide.createIcons();
+</script>
+
+ 
+  <!-- Dashboard Section -->
 <section id="dashboards" class="py-20 bg-gray-100">
   <div class="max-w-6xl mx-auto px-6 text-center">
     <h2 class="text-3xl font-bold text-blue-700 mb-6">Dashboards</h2>
-    <p class="text-gray-600 text-lg mb-12">
-      Access your personalized dashboards for managing your journey with JaQuest.
-    </p>
+    <p class="text-gray-600 text-lg mb-12">Access your personalized dashboards for managing your journey with JaQuest.</p>
     <div class="grid gap-10 md:grid-cols-2">
       <!-- Student Dashboard -->
-      <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition">
+      <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition" data-aos="fade-up">
         <h3 class="text-xl font-semibold mb-2 text-blue-800">Student Dashboard</h3>
-        <p class="mb-4">Access your scholarship applications, documents, and progress tracking.</p>
+        <p class="mb-4 text-gray-600">Access your scholarship applications, documents, and progress tracking.</p>
         <a href="https://jaquest.online/student-dashboard" target="_blank" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Dashboard</a>
       </div>
       <!-- Admin Dashboard -->
-      <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition">
+      <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
         <h3 class="text-xl font-semibold mb-2 text-blue-800">Admin Dashboard</h3>
-        <p class="mb-4">Manage student records, applications, and review statuses.</p>
+        <p class="mb-4 text-gray-600">Manage student records, applications, and review statuses.</p>
         <a href="https://jaquest.online/admin-dashboard" target="_blank" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Admin</a>
       </div>
     </div>
   </div>
-   <!-- Contact Section -->
- <section id="contact" class="bg-[#f5faff] py-20 px-6 md:px-12">
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="bg-[#f5faff] py-20 px-6 md:px-12">
   <div class="max-w-3xl mx-auto text-center">
     <h2 class="text-3xl font-bold text-blue-700 mb-6">Get in Touch</h2>
     <p class="text-gray-700 mb-8">Reach out to us for personalized assistance with your application journey.</p>
-    <a href="mailto:info@jaquest.online" class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full">Email Us</a>
+    <a href="mailto:info@jaquest.online" class="text-white bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full transition">Email Us</a>
   </div>
 </section>
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-10 text-center text-sm" data-aos="fade-up">
-    <div class="flex justify-center gap-6 mb-4">
-      <a href="https://facebook.com/jaquest" target="_blank" class="hover:text-white">Facebook</a>
-      <a href="https://twitter.com/jaquest" target="_blank" class="hover:text-white">Twitter</a>
-      <a href="https://instagram.com/jaquest" target="_blank" class="hover:text-white">Instagram</a>
-    </div>
-    <p>&copy; 2025 JaQuest Scholarship Agency. All rights reserved.</p>
-  </footer>
 
-  <!-- AOS Animation Init -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-  </script>
-  <div class="chat-toggle" onclick="toggleChat()">💬</div>
-  <div class="chat-container" id="chatContainer">
-    <iframe class="chat-iframe" src="https://example.com/chatbot"></iframe>
+<!-- Chat Button -->
+<button onclick="toggleChat()" class="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 animate-bounce" aria-label="Open Chat">
+  <i data-lucide="message-circle" class="w-6 h-6"></i>
+</button>
+
+<!-- Chatbot Container -->
+<div id="chatContainer" class="fixed bottom-20 right-6 z-50 w-full max-w-xs md:max-w-md bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 transform translate-y-full opacity-0 pointer-events-none">
+  <div class="flex items-center justify-between p-4 bg-blue-600 text-white">
+    <span class="font-semibold">JAQuest Chat Assistant</span>
+    <button onclick="toggleChat()" class="hover:text-gray-200 focus:outline-none">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
   </div>
-  
-  <script>
-    function toggleChat() {
-      const chat = document.getElementById('chatContainer');
-      chat.style.display = (chat.style.display === 'none' || chat.style.display === '') ? 'block' : 'none';
+  <iframe src="https://example.com/chatbot" title="Chatbot" class="w-full h-96 border-0"></iframe>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-10 text-center text-sm" data-aos="fade-up">
+  <div class="flex justify-center gap-6 mb-4">
+    <a href="https://facebook.com/jaquest" target="_blank" class="hover:text-white transition">Facebook</a>
+    <a href="https://twitter.com/jaquest" target="_blank" class="hover:text-white transition">Twitter</a>
+    <a href="https://instagram.com/jaquest" target="_blank" class="hover:text-white transition">Instagram</a>
+  </div>
+  <p>&copy; JaQuest Scholarship Agency. All rights reserved.</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+  lucide.createIcons();
+
+  function toggleChat() {
+    const chat = document.getElementById('chatContainer');
+    const isVisible = chat.classList.contains('translate-y-0');
+
+    if (isVisible) {
+      chat.classList.remove('translate-y-0', 'opacity-100');
+      chat.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+    } else {
+      chat.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+      chat.classList.add('translate-y-0', 'opacity-100');
     }
-  </script>
-  <!-- AOS Animation Init -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-    AOS.init();
-  </script>
-  </footer>
+  }
+</script>
 </body>
 </html>
-
-
-
-
-
