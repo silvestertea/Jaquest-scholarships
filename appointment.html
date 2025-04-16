@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book an Appointment | JAQuest</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* Custom styles for form */
+    .form-container {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+    }
+    .form-input {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 1rem;
+    }
+    .form-input:focus {
+      border-color: #4C51BF;
+      outline: none;
+    }
+    .form-button {
+      background-color: #4C51BF;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .form-button:hover {
+      background-color: #2B2E8B;
+      transform: translateY(-2px);
+    }
+
+    /* Floating label styles */
+    .floating-label {
+      position: absolute;
+      left: 12px;
+      top: 10px;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      transition: top 0.3s, font-size 0.3s;
+    }
+
+    .form-input:focus + .floating-label, .form-input:not(:placeholder-shown) + .floating-label {
+      top: -12px;
+      font-size: 0.75rem;
+    }
+
+    /* Custom styles for select and text areas */
+    .form-select, .form-textarea {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .form-select:focus, .form-textarea:focus {
+      border-color: #4C51BF;
+    }
+
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+  <!-- Navigation Bar -->
+  <nav class="bg-transparent p-4 fixed w-full top-0 z-20">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-white text-xl font-semibold">JAQuest</a>
+      <div>
+        <a href="index.html" class="px-4 text-white">Home</a>
+        <a href="about.html" class="px-4 text-white">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Appointment Section -->
+  <section class="flex items-center justify-center min-h-screen bg-cover bg-center relative" style="background-image: url('appointment-bg.jpg');">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative z-10 text-center text-white px-6">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 animate__animated animate__fadeInUp">Book Your Appointment</h1>
+      <p class="text-lg sm:text-xl mb-8 animate__animated animate__fadeInUp animate__delay-1s">Let’s get you started on your journey towards global education opportunities.</p>
+
+      <!-- Appointment Form -->
+      <div class="max-w-lg sm:max-w-xl mx-auto bg-opacity-70 p-8 rounded-lg form-container">
+        <form action="#" method="POST" class="space-y-6">
+          <div class="relative">
+            <input type="text" name="name" id="name" placeholder=" " class="form-input p-4" required />
+            <label for="name" class="floating-label">Your Name</label>
+          </div>
+
+          <div class="relative">
+            <input type="email" name="email" id="email" placeholder=" " class="form-input p-4" required />
+            <label for="email" class="floating-label">Your Email</label>
+          </div>
+
+          <div class="relative">
+            <input type="tel" name="phone" id="phone" placeholder=" " class="form-input p-4" required />
+            <label for="phone" class="floating-label">Your Phone</label>
+          </div>
+
+          <div class="relative">
+            <input type="date" name="appointment_date" id="appointment_date" placeholder=" " class="form-input p-4" required />
+            <label for="appointment_date" class="floating-label">Appointment Date</label>
+          </div>
+
+          <!-- Mode of Appointment -->
+          <div class="relative">
+            <label for="mode" class="block text-sm text-white mb-2">Mode of Appointment</label>
+            <select name="mode" id="mode" class="form-select p-4 w-full" required>
+              <option value="online">Online (Zoom, Google Meet, etc.)</option>
+              <option value="in_person">In-person (At our office)</option>
+              <option value="phone">Phone Call</option>
+              <option value="custom">Custom (Please specify)</option>
+            </select>
+          </div>
+
+          <!-- Custom Mode details -->
+          <div id="custom-mode-container" class="hidden mt-4">
+            <textarea name="custom_mode_details" rows="4" placeholder="Please specify your custom appointment mode" class="form-textarea p-4 w-full"></textarea>
+          </div>
+
+          <div class="relative">
+            <textarea name="message" id="message" rows="4" placeholder="Additional Message (optional)" class="form-textarea p-4 w-full"></textarea>
+          </div>
+
+          <button type="submit" class="form-button w-full mt-6">Submit Appointment</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-4 text-center text-white">
+    <p>&copy; 2025 JAQuest. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript to handle custom mode visibility -->
+  <script>
+    // Toggle custom mode field visibility
+    document.getElementById("mode").addEventListener("change", function() {
+      const customModeContainer = document.getElementById("custom-mode-container");
+      if (this.value === "custom") {
+        customModeContainer.classList.remove("hidden");
+      } else {
+        customModeContainer.classList.add("hidden");
+      }
+    });
+  </script>
+
+</body>
+</html>
