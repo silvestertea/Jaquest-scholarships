@@ -238,8 +238,6 @@
       &times;
     </button>
   </div>
-    </div>
-  </div>
   <div id="mobile-menu" class="hidden md:hidden bg-blue-600 text-white">
     <div class="px-4 py-2">
       <a href="home.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">Home</a>
@@ -816,7 +814,7 @@ function startJourney() {
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>
-  AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 1000, once: true });
   lucide.createIcons();
   function toggleChat() {
     const chat = document.getElementById('chatContainer');
@@ -843,6 +841,8 @@ playBtn.addEventListener('click', () => {
       video.classList.remove("hidden");
       video.play();
     });
+</script>
+    <script>
   const menuButton = document.getElementById("menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
   const closeButton = document.getElementById("close-menu");
