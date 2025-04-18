@@ -23,175 +23,153 @@
     body {
       font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
-      background-color: #f5deb3;
-      color: #333;
+      overflow-x: hidden;
     }
-
-    /* Hero background parallax effect */
-    .hero-parallax {
-      background-image: url('https://source.unsplash.com/1600x900/?students,university');
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-      height: 90vh;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    #mobile-menu:not(.hidden) {
+      animation: slideLeft 0.4s ease-out;
     }
-
-    .hero-overlay {
-      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
+    @keyframes slideLeft {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      color: white;
-      padding: 20px;
-      animation: fadeIn 2s ease-in-out;
+    .parallax {
+      transform: translateY(var(--scroll, 0px));
+      transition: transform 0.2s ease-out;
     }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Glow Hover */
-    .glow-hover:hover {
-      box-shadow: 0 0 15px #2563eb;
-      transform: scale(1.05);
-    }
-
-    /* Mobile menu blur */
-    .backdrop-blur {
-      backdrop-filter: blur(8px);
-    }
-
-    /* Loading screen */
-    #loading-screen {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: #f5deb3;
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    #loading-screen img {
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+    .video-parallax {
+      transform: scale(var(--scale, 1));
+      transition: transform 0.2s ease-out;
     }
   </style>
 </head>
-<body>
+<body class="bg-[#f5deb3] text-gray-800">
 
 <!-- Loading Screen -->
-<div id="loading-screen">
-  <img src="jaquest.png" alt="Loading..." class="h-20 mb-4">
-  <h1 class="text-2xl font-bold text-blue-700 animate-pulse">Loading JaQuest...</h1>
+<div id="loading-screen" class="fixed inset-0 bg-[#f5deb3] z-[9999] flex items-center justify-center">
+  <div class="text-center animate__animated animate__fadeIn animate__delay-1s">
+    <img src="jaquest.png" alt="JaQuest Logo" class="h-16 w-16 mx-auto mb-4 animate-bounce" />
+    <h1 class="text-xl font-bold text-blue-700 animate-pulse">Loading JaQuest...</h1>
+  </div>
 </div>
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loading-screen');
+    loader.classList.add('animate__fadeOut');
+    setTimeout(() => loader.style.display = 'none', 1500);
+  });
+</script>
 
-<!-- Navigation Bar -->
-<nav class="fixed top-0 left-0 w-full bg-blue-600 text-white z-50 shadow-md">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-    <div class="flex items-center space-x-3">
-      <img src="jaquest.png" alt="JaQuest" class="h-12 w-12 rounded-full">
-      <span class="font-extrabold text-xl">JaQuest</span>
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 w-full bg-blue-600 text-white shadow-md z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-24">
+      <div class="flex items-center">
+        <img src="jaquest.png" alt="JaQuest Logo" class="h-16 w-16 rounded-full mr-4" />
+        <span class="text-2xl font-bold">JaQuest</span>
+      </div>
+      <div class="hidden md:flex space-x-8 text-lg items-center">
+        <a href="index.html" class="text-teal-400 hover:text-white transition duration-300">Home</a>
+        <a href="services.html" class="hover:text-teal-400 transition duration-300">Our Services</a>
+        <a href="affordability.html" class="hover:text-teal-400 transition duration-300">Affordability</a>
+        <a href="blog.html" class="hover:text-teal-400 transition duration-300">News & Blog</a>
+        <a href="contact.html" class="hover:text-teal-400 transition duration-300">Contact</a>
+      </div>
+      <div class="md:hidden flex items-center">
+        <button id="menu-button" class="p-2 rounded-lg bg-white text-blue-600 shadow-lg">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
     </div>
-
-    <div class="hidden md:flex space-x-6">
-      <a href="#" class="hover:text-yellow-300">Home</a>
-      <a href="#" class="hover:text-yellow-300">Services</a>
-      <a href="#" class="hover:text-yellow-300">Affordability</a>
-      <a href="#" class="hover:text-yellow-300">Blog</a>
-      <a href="#" class="hover:text-yellow-300">Contact</a>
+  </div>
+  <div id="mobile-menu" class="hidden fixed top-0 left-0 w-1/2 h-full bg-[#f5deb3] text-gray-900 shadow-2xl z-50 md:hidden">
+    <div class="flex justify-end p-4">
+      <button id="close-menu" class="text-3xl font-bold text-gray-700 hover:text-red-600">&times;</button>
     </div>
-
-    <!-- Mobile hamburger -->
-    <div class="md:hidden">
-      <button id="menu-button">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+    <div class="flex flex-col space-y-4 p-6">
+      <a href="index.html" class="hover:bg-yellow-300 rounded px-4 py-2">Home</a>
+      <a href="services.html" class="hover:bg-yellow-300 rounded px-4 py-2">Our Services</a>
+      <a href="affordability.html" class="hover:bg-yellow-300 rounded px-4 py-2">Affordability</a>
+      <a href="blog.html" class="hover:bg-yellow-300 rounded px-4 py-2">News & Blog</a>
+      <a href="contact.html" class="hover:bg-yellow-300 rounded px-4 py-2">Contact</a>
     </div>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden fixed inset-0 bg-white/70 backdrop-blur z-40 p-8">
-  <button id="close-menu" class="text-3xl text-red-600 absolute top-6 right-8">&times;</button>
-  <div class="mt-16 space-y-6 text-center text-lg">
-    <a href="#" class="block">Home</a>
-    <a href="#" class="block">Services</a>
-    <a href="#" class="block">Affordability</a>
-    <a href="#" class="block">Blog</a>
-    <a href="#" class="block">Contact</a>
-  </div>
-</div>
-
-<!-- Hero Section -->
-<section class="hero-parallax">
-  <div class="hero-overlay"></div>
-  <div class="hero-content" data-aos="fade-up">
-    <h1 class="text-5xl font-extrabold mb-4">Unlock <span class="text-yellow-400">Global</span> Opportunities</h1>
-    <p class="text-xl mb-6">Helping students secure fully funded scholarships to achieve their dreams.</p>
-    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-      <a href="#about" class="px-6 py-3 bg-yellow-400 text-blue-900 font-semibold rounded-full glow-hover">Learn More</a>
-      <a href="appointment.html" class="px-6 py-3 bg-transparent border border-white text-white rounded-full glow-hover">Book Appointment</a>
-    </div>
-  </div>
-</section>
-
-<!-- Apply Now CTA -->
-<section id="apply" class="py-20 bg-white text-center" data-aos="fade-up">
-  <h2 class="text-4xl font-bold text-blue-700 mb-6">Ready to Apply?</h2>
-  <p class="text-lg text-gray-600 mb-8">Start your journey toward international education today.</p>
-  <a href="form.html" class="inline-block px-8 py-4 bg-yellow-400 text-blue-900 font-bold rounded-full glow-hover">Apply Now</a>
-</section>
-
-<!-- Footer -->
-<footer class="bg-blue-700 text-white text-center py-6">
-  <p>&copy; 2025 JaQuest. All rights reserved.</p>
-</footer>
-
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-  AOS.init();
-
-  // Mobile Menu Toggle
   const menuBtn = document.getElementById('menu-button');
   const closeBtn = document.getElementById('close-menu');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  menuBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-  closeBtn.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+  });
 
-  // Loading Screen
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('loading-screen');
-    loader.style.opacity = '0';
-    setTimeout(() => loader.style.display = 'none', 1000);
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
   });
 </script>
 
-  <section class="py-20 bg-gray-100">
+<!-- Hero Section -->
+<section class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden text-white">
+  <div class="absolute inset-0 z-0 video-parallax">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source src="deshbaghat.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-transparent"></div>
+  </div>
+
+  <div class="relative z-10 px-6 text-center max-w-2xl mx-auto">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 tracking-widest text-shadow-lg parallax" data-aos="fade-down" data-aos-delay="200">Unlock <span class="text-indigo-600">Global</span> Opportunities</h1>
+    <p class="text-base sm:text-lg md:text-xl text-gray-200 mb-8 leading-relaxed text-shadow-md parallax" data-aos="fade-up" data-aos-delay="400">Helping students secure fully funded scholarships and tuition waivers to achieve their <span class="font-semibold text-indigo-600">dreams</span>.</p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6" data-aos="fade-up" data-aos-delay="600">
+      <a href="#about" class="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-blue-900 transition transform hover:scale-105">
+        Learn More
+      </a>
+      <a href="appointment.html" class="px-6 py-3 bg-yellow-500 text-blue-900 font-semibold rounded-full hover:bg-yellow-600 transition">
+        Book an Appointment
+      </a>
+    </div>
+    <p class="text-lg font-semibold text-indigo-400 mb-6" data-aos="fade-up" data-aos-delay="800">
+      🎓 <span class="text-white">Over 300 students</span> placed in top universities worldwide
+    </p>
+  </div>
+  <div class="absolute bottom-6 text-white text-2xl animate-bounce">
+    <a href="#about">↓</a>
+  </div>
+</section>
+
+<!-- Apply CTA -->
+<section id="apply" class="py-20 bg-white text-center">
+  <h2 class="text-3xl font-bold text-blue-700 mb-4" data-aos="fade-up">Ready to Apply?</h2>
+  <p class="mb-6 text-gray-700" data-aos="fade-up" data-aos-delay="200">Start your journey toward international education today.</p>
+  <a href="form.html" class="inline-block px-8 py-3 bg-yellow-500 text-blue-900 font-semibold rounded-full hover:bg-yellow-600 transition" data-aos="zoom-in" data-aos-delay="400">
+    Apply Now
+  </a>
+</section>
+
+<script>
+  AOS.init({
+    duration: 1400,
+    easing: 'ease-in-out-back',
+    once: true,
+    mirror: false,
+    offset: 100,
+  });
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    document.querySelectorAll('.parallax').forEach(el => {
+      el.style.setProperty('--scroll', `${scrollY * -0.2}px`);
+    });
+    const video = document.querySelector('.video-parallax');
+    if (video) {
+      const scaleValue = 1 + scrollY * 0.0005;
+      video.style.setProperty('--scale', scaleValue);
+    }
+  });
+</script>
     <section class="py-20 bg-gray-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
     
