@@ -1,122 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book an Appointment | JAQuest</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Appointment | JaSQuest</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   <style>
-    /* Custom styles for form */
     .form-container {
       background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(8px);
       border-radius: 10px;
     }
-    .form-input {
+    .form-input, .form-textarea {
       background-color: rgba(255, 255, 255, 0.1);
       color: white;
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 8px;
-      padding: 12px;
+      padding: 14px;
       font-size: 1rem;
+      width: 100%;
     }
-    .form-input:focus {
-      border-color: #4C51BF;
+    .form-select {
+      background: linear-gradient(to right, #1e293b, #334155);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 1rem;
+      width: 100%;
+      transition: border 0.3s ease, background-color 0.3s ease;
+    }
+    .form-select:focus {
+      border-color: #60A5FA;
+      background-color: rgba(30, 41, 59, 1);
       outline: none;
     }
     .form-button {
       background-color: #4C51BF;
-      border: none;
       color: white;
-      padding: 12px 24px;
+      padding: 14px;
       border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      width: 100%;
     }
     .form-button:hover {
       background-color: #2B2E8B;
-      transform: translateY(-2px);
     }
-
-    /* Floating label styles */
     .floating-label {
       position: absolute;
-      left: 12px;
-      top: 10px;
+      left: 16px;
+      top: 14px;
       font-size: 0.875rem;
       color: rgba(255, 255, 255, 0.6);
       transition: top 0.3s, font-size 0.3s;
     }
-
-    .form-input:focus + .floating-label, .form-input:not(:placeholder-shown) + .floating-label {
+    .form-input:focus + .floating-label,
+    .form-input:not(:placeholder-shown) + .floating-label {
       top: -12px;
       font-size: 0.75rem;
     }
-
-    /* Custom styles for select and text areas */
-    .form-select, .form-textarea {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: white;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+    .hidden {
+      display: none;
     }
-
-    .form-select:focus, .form-textarea:focus {
-      border-color: #4C51BF;
+    #confirmation-message {
+      display: none;
+      color: #10B981;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 20px;
     }
-
+    .spinner {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white">
 
-  <!-- Navigation Bar -->
-  <nav class="bg-transparent p-4 fixed w-full top-0 z-20">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="#" class="text-white text-xl font-semibold">JAQuest</a>
-      <div>
-        <a href="index.html" class="px-4 text-white">Home</a>
-        <a href="about.html" class="px-4 text-white">About</a>
+  <!-- Navbar -->
+  <nav class="bg-gradient-to-r from-indigo-900 to-indigo-700 p-4 fixed w-full z-20 shadow-md">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center">
+      <a href="#" class="text-white text-xl font-bold">JAQuest</a>
+      <div class="space-x-4 text-sm mt-2 sm:mt-0">
+        <a href="index.html" class="text-white hover:text-blue-300">Home</a>
+        <a href="about.html" class="text-white hover:text-blue-300">About</a>
       </div>
     </div>
   </nav>
 
-  <!-- Appointment Section -->
-  <section class="flex items-center justify-center min-h-screen bg-cover bg-center relative" style="background-image: url('appointment-bg.jpg');">
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-    <div class="relative z-10 text-center text-white px-6">
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 animate__animated animate__fadeInUp">Book Your Appointment</h1>
-      <p class="text-lg sm:text-xl mb-8 animate__animated animate__fadeInUp animate__delay-1s">Let’s get you started on your journey towards global education opportunities.</p>
+  <!-- Section -->
+  <section class="pt-28 pb-16 px-4 sm:px-6 flex items-center justify-center min-h-screen bg-cover bg-center relative" style="background-image: url('appointment-bg.jpg');">
+    <div class="absolute inset-0 bg-black opacity-60"></div>
+    <div class="relative z-10 max-w-2xl w-full">
+      <div class="text-center mb-8 px-2">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold animate__animated animate__fadeInUp">Book Your Appointment</h1>
+       <p class="mt-4 text-sm sm:text-base animate__animated animate__fadeInUp animate__delay-1s">
+    Let’s get you started on your journey. Choose a time that works for you.
+    </p>
+      </div>
 
-      <!-- Appointment Form -->
-      <div class="max-w-lg sm:max-w-xl mx-auto bg-opacity-70 p-8 rounded-lg form-container">
-        <form action="#" method="POST" class="space-y-6">
+      <!-- Form -->
+      <div class="form-container p-6 sm:p-8">
+        <form id="appointment-form" action="#" method="POST" class="space-y-6">
           <div class="relative">
-            <input type="text" name="name" id="name" placeholder=" " class="form-input p-4" required />
+            <input type="text" name="name" id="name" placeholder=" " class="form-input" required />
             <label for="name" class="floating-label">Your Name</label>
           </div>
 
           <div class="relative">
-            <input type="email" name="email" id="email" placeholder=" " class="form-input p-4" required />
+            <input type="email" name="email" id="email" placeholder=" " class="form-input" required />
             <label for="email" class="floating-label">Your Email</label>
           </div>
 
           <div class="relative">
-            <input type="tel" name="phone" id="phone" placeholder=" " class="form-input p-4" required />
+            <input type="tel" name="phone" id="phone" placeholder=" " class="form-input" required />
             <label for="phone" class="floating-label">Your Phone</label>
           </div>
 
           <div class="relative">
-            <input type="date" name="appointment_date" id="appointment_date" placeholder=" " class="form-input p-4" required />
+            <input type="text" name="appointment_date" id="appointment_date" placeholder=" " class="form-input" required />
             <label for="appointment_date" class="floating-label">Appointment Date</label>
           </div>
 
-          <!-- Mode of Appointment -->
-          <div class="relative">
-            <label for="mode" class="block text-sm text-white mb-2">Mode of Appointment</label>
-            <select name="mode" id="mode" class="form-select p-4 w-full" required>
+          <div>
+            <label for="appointment_time" class="block text-sm mb-2">Appointment Time</label>
+            <select name="appointment_time" id="appointment_time" class="form-select" required>
+              <option value="">Select a time</option>
+              <option value="09:00 AM">09:00 AM</option>
+              <option value="09:30 AM">09:30 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="10:30 AM">10:30 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="11:30 AM">11:30 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="12:30 PM">12:30 PM</option>
+              <option value="01:00 PM">01:00 PM</option>
+              <option value="01:30 PM">01:30 PM</option>
+              <option value="02:00 PM">02:00 PM</option>
+              <option value="02:30 PM">02:30 PM</option>
+              <option value="03:00 PM">03:00 PM</option>
+              <option value="03:30 PM">03:30 PM</option>
+              <option value="04:00 PM">04:00 PM</option>
+              <option value="04:30 PM">04:30 PM</option>
+              <option value="05:00 PM">05:00 PM</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mode" class="block text-sm mb-2">Mode of Appointment</label>
+            <select name="mode" id="mode" class="form-select" required>
               <option value="online">Online (Zoom, Google Meet, etc.)</option>
               <option value="in_person">In-person (At our office)</option>
               <option value="phone">Phone Call</option>
@@ -124,68 +158,57 @@
             </select>
           </div>
 
-          <!-- Custom Mode details -->
-          <div id="custom-mode-container" class="hidden mt-4">
-            <textarea name="custom_mode_details" rows="4" placeholder="Please specify your custom appointment mode" class="form-textarea p-4 w-full"></textarea>
+          <div id="custom-mode-container" class="hidden">
+            <textarea name="custom_mode_details" rows="3" placeholder="Please specify your custom appointment mode" class="form-textarea mt-2"></textarea>
           </div>
 
-          <div class="relative">
-            <textarea name="message" id="message" rows="4" placeholder="Additional Message (optional)" class="form-textarea p-4 w-full"></textarea>
+          <div>
+            <textarea name="message" id="message" rows="3" placeholder="Additional Message (optional)" class="form-textarea"></textarea>
           </div>
 
-          <button type="submit" class="form-button w-full mt-6">Submit Appointment</button>
+          <button type="submit" class="form-button mt-4">Submit Appointment</button>
+
+          <!-- Progress Spinner -->
+          <div id="spinner" class="spinner">
+            <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-400 mx-auto"></div>
+          </div>
         </form>
+
+        <!-- Confirmation Message -->
+        <div id="confirmation-message">✅ Thank you for booking an appointment! We’ll be in touch soon.</div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black py-4 text-center text-white">
+  <footer class="bg-indigo-900 py-4 text-center text-xs sm:text-sm text-gray-300">
     <p>&copy; 2025 JAQuest. All Rights Reserved.</p>
   </footer>
 
-  <!-- JavaScript to handle custom mode visibility -->
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script>
-    // Toggle custom mode field visibility
-    document.getElementById("mode").addEventListener("change", function() {
-      const customModeContainer = document.getElementById("custom-mode-container");
-      if (this.value === "custom") {
-        customModeContainer.classList.remove("hidden");
-      } else {
-        customModeContainer.classList.add("hidden");
-      }
+    flatpickr("#appointment_date", {
+      dateFormat: "Y-m-d",
+      minDate: "today",
+      maxDate: new Date().fp_incr(365),
     });
-  document.querySelector('form').addEventListener('submit', async function (e) {
-    e.preventDefault();
 
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData.entries());
+    document.getElementById("mode").addEventListener("change", function () {
+      const container = document.getElementById("custom-mode-container");
+      container.classList.toggle("hidden", this.value !== "custom");
+    });
 
-    // Optional: hide/show custom mode field
-    if (data.mode !== "custom") {
-      delete data.custom_mode_details;
-    }
+    document.getElementById("appointment-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("spinner").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("confirmation-message").style.display = "block";
+      }, 2000);
+    });
+  </script>
 
-    try {
-      const res = await fetch('https://jaquest-api.onrender.com/api/appointments', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const result = await res.json();
-
-      if (res.ok) {
-        alert("✅ Appointment submitted successfully!");
-        this.reset();
-      } else {
-        alert("❌ Error: " + result.error || "Something went wrong.");
-      }
-    } catch (error) {
-      alert("❌ Network error. Please try again later.");
-      console.error(error);
-    }
-  });
-</script>
 </body>
 </html>
+
