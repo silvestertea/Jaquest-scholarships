@@ -18,90 +18,22 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; padding-bottom: 120px; }
-
-    .floating {
-      animation: float 3s ease-in-out infinite;
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #f5deb3;
+      color: #333;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
-
-    .chat-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 10000;
-      background-color: #2563eb;
-      color: white;
-      font-size: 24px;
-      padding: 0.75rem;
-      border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .chat-toggle:hover {
-      background-color: #1d4ed8;
-      transform: scale(1.1);
-    }
-
-    .chat-container {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      z-index: 9999;
-      width: 350px;
-      height: 500px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      display: block;
-      background-color: white;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .chat-container.active {
-      display: block;
-      opacity: 1;
-    }
-
-    .chat-iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      border-radius: 16px;
-    }
-
-    @media (max-width: 768px) {
-      .chat-toggle {
-        bottom: 15px;
-        right: 15px;
-        font-size: 20px;
-        padding: 0.5rem;
-      }
-
-      .chat-container {
-        width: 90%;
-        height: 400px;
-        right: 5%;
-      }
-    }
-
-    .mobile-hero {
+    /* Hero background parallax effect */
+    .hero-parallax {
       background-image: url('https://source.unsplash.com/1600x900/?students,university');
+      background-attachment: fixed;
       background-size: cover;
       background-position: center;
-      height: 70vh;
-      width: 100%;
-      margin: 0 auto;
+      height: 90vh;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -109,247 +41,156 @@
       justify-content: center;
     }
 
-    .video-overlay {
+    .hero-overlay {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
-      z-index: 0;
-    }
-
-    .video-bg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
       top: 0;
       left: 0;
-      z-index: -1;
     }
-  /* Text Shadow for enhanced readability */
-  .text-shadow-lg {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  }
 
-  .text-shadow-md {
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Keyframes for smooth fade in (if you want more control) */
-  @keyframes fadeInCustom {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Apply custom animation if using keyframes */
-  .animate__fadeInCustom {
-    animation: fadeInCustom 1.5s ease-out forwards;
-  }
     .hero-content {
+      position: relative;
       z-index: 10;
-      max-width: 700px;
       text-align: center;
-      padding: 20px;
       color: white;
+      padding: 20px;
       animation: fadeIn 2s ease-in-out;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-button {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: bold;
-      color: white;
-      background: linear-gradient(to right, #2563eb, #1d4ed8);
-      border: none;
-      border-radius: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Glow Hover */
+    .glow-hover:hover {
+      box-shadow: 0 0 15px #2563eb;
+      transform: scale(1.05);
     }
 
-    .hero-button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    /* Mobile menu blur */
+    .backdrop-blur {
+      backdrop-filter: blur(8px);
+    }
+
+    /* Loading screen */
+    #loading-screen {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #f5deb3;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #loading-screen img {
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
   </style>
 </head>
-<body class="bg-[#f5deb3] text-gray-800">
-  <!-- Loading Screen -->
-  <div id="loading-screen" class="fixed inset-0 bg-[#f5deb3] z-[9999] flex items-center justify-center">
-    <div class="text-center animate__animated animate__fadeIn animate__delay-1s">
-      <img src="jaquest.png" alt="JaQuest Logo" class="h-16 w-16 mx-auto mb-4 animate-bounce" />
-      <h1 class="text-xl font-bold text-blue-700 animate-pulse">Loading JaQuest...</h1>
+<body>
+
+<!-- Loading Screen -->
+<div id="loading-screen">
+  <img src="jaquest.png" alt="Loading..." class="h-20 mb-4">
+  <h1 class="text-2xl font-bold text-blue-700 animate-pulse">Loading JaQuest...</h1>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full bg-blue-600 text-white z-50 shadow-md">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <div class="flex items-center space-x-3">
+      <img src="jaquest.png" alt="JaQuest" class="h-12 w-12 rounded-full">
+      <span class="font-extrabold text-xl">JaQuest</span>
+    </div>
+
+    <div class="hidden md:flex space-x-6">
+      <a href="#" class="hover:text-yellow-300">Home</a>
+      <a href="#" class="hover:text-yellow-300">Services</a>
+      <a href="#" class="hover:text-yellow-300">Affordability</a>
+      <a href="#" class="hover:text-yellow-300">Blog</a>
+      <a href="#" class="hover:text-yellow-300">Contact</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <div class="md:hidden">
+      <button id="menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </div>
-  <script>
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loading-screen');
-      loader.classList.remove('animate__fadeIn');
-      loader.classList.add('animate__fadeOut');
-      setTimeout(() => loader.style.display = 'none', 2000);
-    });
-  </script>
+</nav>
 
-<<!-- Navigation Bar -->
-<nav class="fixed top-0 left-0 w-full bg-blue-600 text-white shadow-md z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-24">
-      <div class="flex items-center">
-        <img src="jaquest.png" alt="JaQuest Logo" class="h-16 w-16 rounded-full mr-4" />
-        <span class="text-2xl font-bold">JaQuest</span>
-      </div>
-
-<!-- Navigation Links for Desktop -->
-<div class="hidden md:flex space-x-8 text-lg items-center">
-  <a href="index.html" class="text-teal-400 hover:text-white transition">Home</a>
-  <a href="services.html" class="hover:text-teal-400 transition">Our Services</a>
-  <a href="affordability.html" class="hover:text-teal-400 transition">Affordability</a>
-  <a href="blog.html" class="hover:text-teal-400 transition">News & Blog</a>
-  <a href="contact.html" class="hover:text-teal-400 transition">Contact</a>
-</div>
-
-<!-- Hamburger Button (Mobile Only) -->
-<div class="md:hidden flex items-center pl-4 pt-2">
-  <button id="menu-button"
-    class="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 p-2 rounded-full shadow-lg text-white transition-all duration-300">
-    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M4 6h16M4 12h16M4 18h16"></path>
-    </svg>
-  </button>
-</div>
-
-<!-- Mobile Side Menu (Half Screen) -->
-<div id="mobile-menu"
-  class="hidden fixed top-0 left-0 w-1/2 h-full bg-[wheat] text-gray-900 shadow-lg z-50 md:hidden transition-all duration-300 ease-in-out">
-
-  <!-- Close Button -->
-  <div class="flex justify-end p-4">
-    <button id="close-menu" class="text-3xl font-bold text-gray-800 hover:text-red-600">
-      &times;
-    </button>
-  </div>
-
-  <!-- Mobile Nav Links -->
-  <div class="px-6 pb-4 space-y-3">
-    <a href="index.html" class="block text-lg font-medium hover:bg-yellow-300 px-4 py-2 rounded-md transition">Home</a>
-    <a href="services.html" class="block text-lg font-medium hover:bg-yellow-300 px-4 py-2 rounded-md transition">Our Services</a>
-    <a href="affordability.html" class="block text-lg font-medium hover:bg-yellow-300 px-4 py-2 rounded-md transition">Affordability</a>
-    <a href="blog.html" class="block text-lg font-medium hover:bg-yellow-300 px-4 py-2 rounded-md transition">News & Blog</a>
-    <a href="contact.html" class="block text-lg font-medium hover:bg-yellow-300 px-4 py-2 rounded-md transition">Contact</a>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden fixed inset-0 bg-white/70 backdrop-blur z-40 p-8">
+  <button id="close-menu" class="text-3xl text-red-600 absolute top-6 right-8">&times;</button>
+  <div class="mt-16 space-y-6 text-center text-lg">
+    <a href="#" class="block">Home</a>
+    <a href="#" class="block">Services</a>
+    <a href="#" class="block">Affordability</a>
+    <a href="#" class="block">Blog</a>
+    <a href="#" class="block">Contact</a>
   </div>
 </div>
 
-<!-- Optional: Smooth Slide Animation -->
-<style>
-  @keyframes slideLeft {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
+<!-- Hero Section -->
+<section class="hero-parallax">
+  <div class="hero-overlay"></div>
+  <div class="hero-content" data-aos="fade-up">
+    <h1 class="text-5xl font-extrabold mb-4">Unlock <span class="text-yellow-400">Global</span> Opportunities</h1>
+    <p class="text-xl mb-6">Helping students secure fully funded scholarships to achieve their dreams.</p>
+    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+      <a href="#about" class="px-6 py-3 bg-yellow-400 text-blue-900 font-semibold rounded-full glow-hover">Learn More</a>
+      <a href="appointment.html" class="px-6 py-3 bg-transparent border border-white text-white rounded-full glow-hover">Book Appointment</a>
+    </div>
+  </div>
+</section>
 
-  #mobile-menu:not(.hidden) {
-    animation: slideLeft 0.3s ease-out;
-  }
-</style>
+<!-- Apply Now CTA -->
+<section id="apply" class="py-20 bg-white text-center" data-aos="fade-up">
+  <h2 class="text-4xl font-bold text-blue-700 mb-6">Ready to Apply?</h2>
+  <p class="text-lg text-gray-600 mb-8">Start your journey toward international education today.</p>
+  <a href="form.html" class="inline-block px-8 py-4 bg-yellow-400 text-blue-900 font-bold rounded-full glow-hover">Apply Now</a>
+</section>
 
-<!-- JavaScript to Toggle Menu -->
+<!-- Footer -->
+<footer class="bg-blue-700 text-white text-center py-6">
+  <p>&copy; 2025 JaQuest. All rights reserved.</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
+  AOS.init();
+
+  // Mobile Menu Toggle
   const menuBtn = document.getElementById('menu-button');
   const closeBtn = document.getElementById('close-menu');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-  });
+  menuBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+  closeBtn.addEventListener('click', () => mobileMenu.classList.add('hidden'));
 
-  closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
+  // Loading Screen
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loading-screen');
+    loader.style.opacity = '0';
+    setTimeout(() => loader.style.display = 'none', 1000);
   });
 </script>
 
-
-<!-- Hero Section -->
-<section class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden text-white">
-  <!-- Background Video -->
-  <div class="absolute inset-0 z-0">
-    <video autoplay muted loop playsinline class="w-full h-full object-cover">
-      <source src="deshbaghat.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <!-- Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-transparent"></div>
-  </div>
-
-  <!-- Hero Content -->
-  <div class="relative z-10 px-6 text-center max-w-2xl mx-auto">
-    <!-- Heading -->
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 animate__animated animate__fadeInDown animate__delay-1s 
-                tracking-widest text-shadow-lg">
-      Unlock <span class="text-indigo-600">Global</span> Opportunities
-    </h1>
-
-    <!-- Subtext -->
-    <p class="text-base sm:text-lg md:text-xl text-gray-200 mb-8 animate__animated animate__fadeInUp animate__delay-2s 
-              leading-relaxed text-shadow-md">
-      Helping students secure fully funded scholarships and tuition waivers to achieve their <span class="font-semibold text-indigo-600">dreams</span>.
-    </p>
-
-    <!-- Call-to-Action Buttons -->
-    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6 animate__animated animate__fadeInUp animate__delay-3s">
-      <a href="#about" class="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-blue-900 transition duration-300 ease-in-out transform hover:scale-105">
-        Learn More
-      </a>
-      <a href="appointment.html" class="hero-button bg-transparent border border-white text-white hover:bg-white hover:text-blue-900">
-        Book an Appointment
-      </a>
-    </div>
-
-    <!-- Enhanced Trust Badge / Stat -->
-    <p class="text-lg font-semibold text-indigo-400 mb-6 animate__animated animate__fadeInUp animate__delay-4s">
-      🎓 <span class="text-white">Over 300 students</span> placed in top universities worldwide
-    </p>
-  </div>
-
-  <!-- Scroll Indicator -->
-  <div class="absolute bottom-6 text-white text-2xl animate-bounce">
-    <a href="#about">↓</a>
-  </div>
-</section>
-
-  <!-- Apply CTA -->
-  <section id="apply" class="py-20 bg-white text-center">
-    <h2 class="text-3xl font-bold text-blue-700 mb-4">Ready to Apply?</h2>
-    <p class="mb-6 text-gray-700">Start your journey toward international education today.</p>
-    <a href="form.html" class="inline-block px-8 py-3 bg-yellow-500 text-blue-900 font-semibold rounded-full hover:bg-yellow-600">
-      Apply Now
-    </a>
-  </section>
   <section class="py-20 bg-gray-100">
     <section class="py-20 bg-gray-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
