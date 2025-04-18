@@ -226,16 +226,10 @@
         <a href="blog.html" class="hover:text-teal-400 transition">News & Blog</a>
         <a href="contact.html" class="hover:text-teal-400 transition">Contact</a>
       </div>
-<!-- Mobile Menu Button -->
-<div class="md:hidden flex items-center pl-4 pt-2"> <!-- Adjusted position with padding -->
-  <button id="menu-button" class="bg-blue-600 hover:bg-blue-700 p-2 rounded-md text-white shadow-md">
-    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M4 6h16M4 12h16M4 18h16"></path>
-    </svg>
-  </button>
-</div>
+
+    </button>
+  </div>
+
 <!-- Hamburger Button -->
 <div class="md:hidden flex items-center pl-4 pt-2">
   <button id="menu-button" class="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 p-2 rounded-full shadow-lg text-white transition-all duration-300">
@@ -247,18 +241,18 @@
   </button>
 </div>
 
-<!-- Mobile Menu -->
+<!-- Dropdown Mobile Menu -->
 <div id="mobile-menu"
-  class="fixed top-0 left-0 w-full h-screen bg-[wheat] text-gray-900 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+  class="hidden absolute top-16 left-0 w-full bg-[wheat] text-gray-900 shadow-lg z-50 animate-slideDown transition-all duration-300 ease-in-out md:hidden">
   
   <!-- Close Button -->
   <div class="flex justify-end p-4">
-    <button id="close-menu" class="text-4xl font-bold text-gray-900 hover:text-red-600">
+    <button id="close-menu" class="text-3xl font-bold text-gray-800 hover:text-red-600">
       &times;
     </button>
   </div>
 
-  <div class="px-6 py-4 space-y-3">
+  <div class="px-6 pb-4 space-y-3">
     <a href="home.html" class="block text-lg font-medium hover:bg-yellow-300 px-4 py-2 rounded-md transition">Home</a>
     <a href="service.html" class="block text-lg font-medium hover:bg-yellow-300 px-4 py-2 rounded-md transition">Our Service</a>
     <a href="affordable.html" class="block text-lg font-medium hover:bg-yellow-300 px-4 py-2 rounded-md transition">Affordability</a>
@@ -267,18 +261,36 @@
   </div>
 </div>
 
-<!-- JS to Toggle Menu -->
+<!-- Custom Slide Down Animation -->
+<style>
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out forwards;
+  }
+</style>
+
+<!-- JS: Toggle Menu -->
 <script>
   const menuBtn = document.getElementById('menu-button');
   const closeBtn = document.getElementById('close-menu');
   const mobileMenu = document.getElementById('mobile-menu');
 
   menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('-translate-x-full');
+    mobileMenu.classList.remove('hidden');
   });
 
   closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('-translate-x-full');
+    mobileMenu.classList.add('hidden');
   });
 </script>
 
