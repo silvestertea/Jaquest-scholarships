@@ -45,6 +45,13 @@
     #mobile-menu:not(.hidden) {
       animation: slideright 0.4s ease-out;
     }
+    .animate__fadeOut {
+  animation: fadeOut 1s forwards;
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; display: none; }
+}
     @keyframes slideLeft {
       from { transform: translateX(-100%); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
@@ -57,15 +64,17 @@
       transform: scale(var(--scale, 1));
       transition: transform 0.2s ease-out;
     }
-  .globe-container {
-    position: relative;
-    animation: bounce 2s infinite;
-  }
+    .globe-icon {
+  animation: bounce 2s infinite ease-in-out alternate;
+}
 
+@keyframes slideright {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
   .globe-icon {
     animation: bounce 2s ease-in-out infinite;
   }
-
   @keyframes bounce {
     0%, 100% {
       transform: translateY(0);
@@ -259,17 +268,6 @@
             </div>
           </div>
         </div>
-          <!-- Section: Why Choose JAQuest -->
-          <div class="text-center max-w-3xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">
-              Why Choose <span class="text-indigo-600">JaQuest</span>?
-            </h2>
-            <p class="text-lg text-gray-600">
-              With over 10 years of dedicated experience, we've empowered hundreds of students with global opportunities through scholarships, admissions, and personalized mentorship.
-            </p>
-          </div>
-        <!-- Section: Features -->
-        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <!-- Section: Why Choose JAQuest -->
 <section class="py-16 bg-[#f5deb3] text-gray-800">
   <div class="text-center max-w-3xl mx-auto px-4 mb-12" data-aos="zoom-in" data-aos-duration="800">
