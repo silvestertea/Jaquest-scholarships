@@ -209,28 +209,34 @@
         <a href="#" class="hover:text-teal-400"><i class="fa-brands fa-linkedin-in"></i></a>
         <a href="#" class="hover:text-teal-400"><i class="fa-brands fa-instagram"></i></a>
       </div>
- <!-- Mobile Menu Button -->
+<!-- Mobile Menu Button -->
 <div class="md:hidden flex items-center pl-4 pt-2">
   <button id="menu-button" 
-    class="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 
-           border-2 border-white text-white p-2 rounded-xl shadow-lg">
-    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M4 6h16M4 12h16M4 18h16"></path>
-    </svg>
+    class="relative z-50 w-12 h-12 flex items-center justify-center 
+           bg-gradient-to-r from-indigo-600 to-purple-600 
+           hover:from-indigo-700 hover:to-purple-700 
+           border-2 border-white text-white rounded-full shadow-lg transition-all group">
+    <!-- Hamburger Bars -->
+    <div class="space-y-1.5 transition-all duration-300 ease-in-out">
+      <span class="block w-6 h-0.5 bg-white transition-transform origin-top-left 
+                   group-[.open]:rotate-45 group-[.open]:translate-y-2"></span>
+      <span class="block w-6 h-0.5 bg-white transition-opacity 
+                   group-[.open]:opacity-0"></span>
+      <span class="block w-6 h-0.5 bg-white transition-transform origin-bottom-left 
+                   group-[.open]:-rotate-45 group-[.open]:-translate-y-2"></span>
+    </div>
   </button>
 </div>
     </div>
   </div>
   <div id="mobile-menu" class="hidden md:hidden bg-blue-600 text-white">
     <div class="px-4 py-2">
-      <a href="about.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">Homet</a>
-      <a href="programs.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">Services</a>
-      <a href="apply.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">Affordability</a>
-      <a href="contact.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">News & Blog</a>
+      <a href="home.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">Homet</a>
+      <a href="services.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">Services</a>
+      <a href="affordable.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">Affordability</a>
+      <a href="blog.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">News & Blog</a>
      <a href="contact.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">Contact</a>
-      <a href="contact.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">About</a>
+      <a href="about.html" class="block hover:bg-blue-700 px-4 py-2 rounded-md">About</a>
     </div>
   </div>
 </nav>
@@ -829,6 +835,13 @@ playBtn.addEventListener('click', () => {
       video.classList.remove("hidden");
       video.play();
     });
+      const menuButton = document.getElementById("menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    menuButton.classList.toggle("open"); // adds 'open' class to trigger animation
+  });
   </script>
 </body>
 </html>
