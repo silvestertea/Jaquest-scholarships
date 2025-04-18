@@ -227,6 +227,17 @@
     </div>
   </button>
 </div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu"
+  class="fixed top-0 left-0 w-full h-screen bg-amber-100 text-gray-800 z-40 transform -translate-x-full 
+         transition-transform duration-300 ease-in-out md:hidden">
+  <!-- Close Button -->
+  <div class="flex justify-end p-4">
+    <button id="close-menu" class="text-gray-800 text-3xl font-bold hover:text-red-500">
+      &times;
+    </button>
+  </div>
     </div>
   </div>
   <div id="mobile-menu" class="hidden md:hidden bg-blue-600 text-white">
@@ -824,9 +835,6 @@ playBtn.addEventListener('click', () => {
   videoElement.classList.remove('hidden');
   videoElement.play();
 });
-</script>
-  <!-- Video Playback Script -->
-  <script>
     document.getElementById("playBtn").addEventListener("click", function () {
       const video = document.getElementById("videoElement");
       const thumbnail = document.getElementById("videoThumb");
@@ -835,14 +843,25 @@ playBtn.addEventListener('click', () => {
       video.classList.remove("hidden");
       video.play();
     });
-      const menuButton = document.getElementById("menu-button");
+  const menuButton = document.getElementById("menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
+  const closeButton = document.getElementById("close-menu");
 
+  // Toggle menu and hamburger animation
   menuButton.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-    menuButton.classList.toggle("open"); // adds 'open' class to trigger animation
+    const isOpen = mobileMenu.classList.contains("translate-x-0");
+    mobileMenu.classList.toggle("-translate-x-full");
+    mobileMenu.classList.toggle("translate-x-0");
+    menuButton.classList.toggle("open");
   });
-  </script>
+
+  // Close menu with "X" button
+  closeButton.addEventListener("click", () => {
+    mobileMenu.classList.add("-translate-x-full");
+    mobileMenu.classList.remove("translate-x-0");
+    menuButton.classList.remove("open");
+  });
+</script>
 </body>
 </html>
 
