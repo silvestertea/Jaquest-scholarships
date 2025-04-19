@@ -603,13 +603,22 @@ function startJourney() {
 <script>
   AOS.init({ duration: 1000, once: true });
 </script>
+  <!-- Chat Button -->
+<button onclick="toggleChat()" 
+  class="fixed top-1/2 right-4 transform -translate-y-1/2 z-[9999]
+         bg-blue-600 hover:bg-blue-700 text-white p-3 md:p-4 
+         rounded-full shadow-lg transition transform hover:scale-105 
+         focus:outline-none focus:ring-4 focus:ring-blue-300 animate-bounce"
+  aria-label="Open Chat">
+  <i data-lucide="message-circle" class="w-5 h-5 md:w-6 md:h-6"></i>
+</button>
 <!-- Chatbot Container -->
 <div id="chatContainer" 
-  class="fixed bottom-32 right-4 md:bottom-28 md:right-6 z-50 
+  class="fixed top-1/2 right-20 transform -translate-y-1/2 z-[9999]
          w-full max-w-xs md:max-w-sm lg:max-w-md 
          bg-white rounded-xl shadow-lg overflow-hidden 
          transition-transform transition-opacity duration-500 ease-in-out
-         transform translate-y-full opacity-0 pointer-events-none">
+         translate-x-full opacity-0 pointer-events-none">
   <div class="flex items-center justify-between p-4 bg-blue-600 text-white">
     <span class="font-semibold text-sm md:text-base">JaQuest Chat Assistant</span>
     <button onclick="toggleChat()" class="hover:text-gray-200 focus:outline-none">
@@ -732,14 +741,14 @@ function startJourney() {
 <script>
   AOS.init({ duration: 1000, once: true });
   lucide.createIcons();
- function toggleChat() {
+  function toggleChat() {
     const chat = document.getElementById('chatContainer');
-    if (chat.classList.contains('translate-y-full')) {
-      chat.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
-      chat.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+    if (chat.classList.contains('translate-x-full')) {
+      chat.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+      chat.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
     } else {
-      chat.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
-      chat.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+      chat.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
+      chat.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
     }
   }
 playBtn.addEventListener('click', () => {
