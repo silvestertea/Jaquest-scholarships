@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-  body {
+  body 
+     <div class="pb-20">
+    {
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -223,9 +225,11 @@
       </h1>
 
       <div class="flex justify-center items-center gap-4 flex-wrap" data-aos="zoom-in" data-aos-delay="400">
-        <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-full">
-          Apply Now
-        </button>
+       <a href="form.html">
+       <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-full">
+         Apply Now
+       </button>
+       </a>
         <a href="#" class="flex items-center text-gray-700">
           <div class="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center">
             <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
@@ -794,6 +798,7 @@ function startJourney() {
   </div>
   <p>&copy; JaQuest Scholarship Agency. All rights reserved.</p>
 </footer>
+</div>
 
 <!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -841,47 +846,41 @@ playBtn.addEventListener('click', () => {
       video.play();
     });
   </script>
-   <!-- Fixed Transparent Blue Bottom Navbar -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-blue-900 bg-opacity-70 backdrop-blur-md z-50">
-    <div class="flex justify-around items-center py-3 text-white text-xs sm:text-sm">
-      <div class="flex flex-col items-center">
-        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10.707 1.707a1 1 0 00-1.414 0L1 10h3v7a1 1 0 001 1h4v-5h2v5h4a1 1 0 001-1v-7h3L10.707 1.707z" />
-        </svg>
-        <span>Home</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10 2a2 2 0 012 2v1h-4V4a2 2 0 012-2zM4 7h12v10H4V7zm6 3a1 1 0 00-.993.883L9 11v2a1 1 0 001.993.117L11 13v-2a1 1 0 00-1-1z" />
-        </svg>
-        <span>Services</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M6 3a1 1 0 000 2h1v11a1 1 0 002 0V5h1a1 1 0 000-2H6z" />
-        </svg>
-        <span>Plans</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M3 3a1 1 0 011-1h12a1 1 0 011 1v16l-7-4-7 4V3z" />
-        </svg>
-        <span>Blog</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M18 13V7a1 1 0 00-1-1h-3.586l-2-2H8.586l-2 2H3a1 1 0 00-1 1v6h16zM4 14h12v2H4v-2z" />
-        </svg>
-        <span>Contact</span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+ <!-- Fixed Transparent Blue Bottom Navbar -->
+<nav class="fixed bottom-2 left-0 right-0 bg-blue-900 bg-opacity-70 backdrop-blur-md z-50">
+  <div class="flex justify-around items-center py-3 text-white text-xs sm:text-sm">
+    <a href="index.html" class="flex flex-col items-center">
+      <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10.707 1.707a1 1 0 00-1.414 0L1 10h3v7a1 1 0 001 1h4v-5h2v5h4a1 1 0 001-1v-7h3L10.707 1.707z" />
+      </svg>
+      <span>Home</span>
+    </a>
+    <a href="services.html" class="flex flex-col items-center">
+      <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 2a2 2 0 012 2v1h-4V4a2 2 0 012-2zM4 7h12v10H4V7zm6 3a1 1 0 00-.993.883L9 11v2a1 1 0 001.993.117L11 13v-2a1 1 0 00-1-1z" />
+      </svg>
+      <span>Services</span>
+    </a>
+    <a href="plans.html" class="flex flex-col items-center">
+      <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M6 3a1 1 0 000 2h1v11a1 1 0 002 0V5h1a1 1 0 000-2H6z" />
+      </svg>
+      <span>Plans</span>
+    </a>
+    <a href="blog.html" class="flex flex-col items-center">
+      <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M3 3a1 1 0 011-1h12a1 1 0 011 1v16l-7-4-7 4V3z" />
+      </svg>
+      <span>Blog</span>
+    </a>
+    <a href="contact.html" class="flex flex-col items-center">
+      <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M18 13V7a1 1 0 00-1-1h-3.586l-2-2H8.586l-2 2H3a1 1 0 00-1 1v6h16zM4 14h12v2H4v-2z" />
+      </svg>
+      <span>Contact</span>
+    </a>
+  </div>
+</nav>
 </body>
 </html>
 
