@@ -216,7 +216,7 @@
             Apply Now
           </button>
         </a>
-       <!-- Watch Here Button -->
+<!-- Watch Here Button -->
 <button onclick="openVideoModal()" class="flex items-center text-gray-700 hover:text-yellow-500 transition">
   <div class="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center hover:bg-yellow-100 transition">
     <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
@@ -825,7 +825,7 @@ playBtn.addEventListener('click', () => {
     </a>
   </div>
 </nav>
-  <!-- Video Popup Modal -->
+<!-- Video Popup Modal -->
 <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-500">
   <div id="modalContent" class="bg-white rounded-2xl overflow-hidden max-w-2xl w-full relative shadow-2xl transform scale-90 opacity-0 transition-all duration-500">
     <!-- Close Button -->
@@ -837,37 +837,39 @@ playBtn.addEventListener('click', () => {
         10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
       </svg>
     </button>
-    <!-- Video iframe -->
+    <!-- Video tag instead of iframe -->
     <div class="aspect-w-16 aspect-h-9">
-      <iframe id="videoFrame" src="" title="Video" allow="autoplay; fullscreen" allowfullscreen class="w-full h-full"></iframe>
+      <video id="videoPlayer" src="deshbaghat.mp4" controls class="w-full h-full rounded-b-2xl"></video>
     </div>
   </div>
 </div>
-  <script>
+<script>
   function openVideoModal() {
     const modal = document.getElementById('videoModal');
     const modalContent = document.getElementById('modalContent');
-    const iframe = document.getElementById('videoFrame');
-    iframe.src = "deshbaghat.MP4"; // 🎥 Your video link here!
+    const video = document.getElementById('videoPlayer');
     modal.classList.remove('opacity-0', 'pointer-events-none');
     modal.classList.add('opacity-100', 'pointer-events-auto');
     // Fade-in effect
     setTimeout(() => {
       modalContent.classList.remove('scale-90', 'opacity-0');
       modalContent.classList.add('scale-100', 'opacity-100');
-    }, 100); 
+    }, 100);
+    video.currentTime = 0; // Start from beginning
+    video.play(); // Auto play
   }
   function closeVideoModal() {
     const modal = document.getElementById('videoModal');
     const modalContent = document.getElementById('modalContent');
-    const iframe = document.getElementById('videoFrame');
-    iframe.src = "";
+    const video = document.getElementById('videoPlayer');
+    video.pause();
+    video.currentTime = 0; // Reset video
     modalContent.classList.remove('scale-100', 'opacity-100');
     modalContent.classList.add('scale-90', 'opacity-0');
     setTimeout(() => {
       modal.classList.remove('opacity-100', 'pointer-events-auto');
       modal.classList.add('opacity-0', 'pointer-events-none');
-    }, 300); // Slight delay to finish fade out
+    }, 300);
   }
 </script>
 </body>
