@@ -19,6 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <style>
   body 
     {
@@ -354,139 +355,81 @@ function startJourney() {
         video.play();
       });
     </script>   
-<section class="py-12 px-6 bg-gray-50" data-aos="fade-up" data-aos-duration="1500">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6" data-aos="zoom-in" data-aos-duration="1000">What Our Students Say</h2>
-    <!-- Slider Container -->
-    <div class="relative">
-      <!-- Slider Wrapper -->
-      <div class="testimonial-slider flex overflow-hidden space-x-6">   
-       <!-- Testimonial 1 -->
-<div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-  <div class="flex items-center justify-center mb-4">
-    <img src="student4.jpg" alt="User 1" 
-      class="w-24 h-24 object-cover rounded-lg border-2 border-yellow-500 shadow-md">
-  </div>
-  <p class="text-gray-600 text-lg mb-4">"JaQuest helped me find the perfect university for my dream program. Their advice was invaluable!"</p>
-  <p class="font-semibold text-gray-800">John Doe</p>
-  <span class="text-gray-500 text-sm">Business Student</span>
-</div>
-        <!-- Testimonial 2 -->
-        <div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-          <div class="flex items-center justify-center mb-4">
-            <img src="student5.jpg" alt="User 2"  class="w-24 h-24 object-cover rounded-lg border-2 border-yellow-500 shadow-md">
-          </div>
-          <p class="text-gray-600 text-lg mb-4">"Thanks to JaQuest, I got a scholarship to study abroad. Best decision ever!"</p>
-          <p class="font-semibold text-gray-800">Jane Smith</p>
-          <span class="text-gray-500 text-sm">Engineering Student</span>
-        </div>
-        <!-- Testimonial 3 -->
-        <div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-          <div class="flex items-center justify-center mb-4">
-            <img src="student6.jpg" alt="User 3"  class="w-24 h-24 object-cover rounded-lg border-2 border-yellow-500 shadow-md">
-          </div>
-          <p class="text-gray-600 text-lg mb-4">"I am now studying at a top-ranked university thanks to JaQuest's guidance and scholarship assistance."</p>
-          <p class="font-semibold text-gray-800">Michael Lee</p>
-          <span class="text-gray-500 text-sm">Medical Student</span>
-        </div>
-        <!-- Testimonial 4 -->
-        <div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <div class="flex items-center justify-center mb-4">
-            <img src="student7.jpg" alt="User 4"  class="w-24 h-24 object-cover rounded-lg border-2 border-yellow-500 shadow-md">
-          </div>
-          <p class="text-gray-600 text-lg mb-4">"JaQuest gave me the support I needed to apply for multiple scholarships. Highly recommend!"</p>
-          <p class="font-semibold text-gray-800">Emily Clark</p>
-          <span class="text-gray-500 text-sm">Arts Student</span>
-        </div>
-        <!-- Testimonial 5 -->
-        <div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-          <div class="flex items-center justify-center mb-4">
-            <img src="student8.jpg" alt="User 5"  class="w-24 h-24 object-cover rounded-lg border-2 border-yellow-500 shadow-md">
-          </div>
-          <p class="text-gray-600 text-lg mb-4">"With JaQuest, I was able to find a career-focused program abroad that suited my goals perfectly."</p>
-          <p class="font-semibold text-gray-800">Sophia Green</p>
-          <span class="text-gray-500 text-sm">Computer Science Student</span>
-        </div>
-      </div>
-      <!-- Slider Controls -->
-      <!-- Left Arrow -->
-      <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full focus:outline-none hidden md:block">
-        &#8592;
-      </button>
-      <!-- Right Arrow -->
-      <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full focus:outline-none hidden md:block">
-        &#8594;
-      </button>
-    </div>
-  </div>
-</section>
-<section class="py-12 px-6 bg-gray-50" data-aos="fade-up" data-aos-duration="1500">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6" data-aos="zoom-in" data-aos-duration="1000">What Our Students Say</h2>
-    <!-- Slider Container -->
-    <div class="relative">
-      <!-- Slider Wrapper -->
-      <div class="testimonial-slider flex overflow-hidden space-x-6">
+     <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+<section class="py-16 bg-gray-50" id="testimonials" data-aos="fade-up" data-aos-duration="1200">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">What Our Students Say</h2>
+
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
         
         <!-- Testimonial 1 -->
-        <div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-          <div class="flex items-center justify-center mb-4">
-            <img src="student4.jpg" alt="User 1" class="w-16 h-16 rounded-full border-2 border-yellow-500">
+        <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+          <img src="student4.jpg" alt="Student 4" class="w-full h-64 object-cover">
+          <div class="p-6 text-center">
+            <p class="text-gray-600 mb-4">"JaQuest opened new doors for my education journey."</p>
+            <h3 class="font-semibold text-gray-800">John Smith</h3>
+            <p class="text-sm text-gray-500">Business Management</p>
           </div>
-          <p class="text-gray-600 text-lg mb-4">"JaQuest helped me find the perfect university for my dream program. Their advice was invaluable!"</p>
-          <p class="font-semibold text-gray-800">John Doe</p>
-          <span class="text-gray-500 text-sm">Business Student</span>
         </div>
+
         <!-- Testimonial 2 -->
-        <div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-          <div class="flex items-center justify-center mb-4">
-            <img src="student5.jpg" alt="User 2" class="w-16 h-16 rounded-full border-2 border-yellow-500">
+        <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+          <img src="student5.jpg" alt="Student 5" class="w-full h-64 object-cover">
+          <div class="p-6 text-center">
+            <p class="text-gray-600 mb-4">"The best consultancy for overseas education. Highly recommend."</p>
+            <h3 class="font-semibold text-gray-800">Sara Lee</h3>
+            <p class="text-sm text-gray-500">Computer Science</p>
           </div>
-          <p class="text-gray-600 text-lg mb-4">"Thanks to JaQuest, I got a scholarship to study abroad. Best decision ever!"</p>
-          <p class="font-semibold text-gray-800">Jane Smith</p>
-          <span class="text-gray-500 text-sm">Engineering Student</span>
         </div>
+
         <!-- Testimonial 3 -->
-        <div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-          <div class="flex items-center justify-center mb-4">
-            <img src="student6.jpg" alt="User 3" class="w-16 h-16 rounded-full border-2 border-yellow-500">
+        <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+          <img src="student6.jpg" alt="Student 6" class="w-full h-64 object-cover">
+          <div class="p-6 text-center">
+            <p class="text-gray-600 mb-4">"Visa and admission process was made so easy by JaQuest."</p>
+            <h3 class="font-semibold text-gray-800">Michael Tan</h3>
+            <p class="text-sm text-gray-500">Engineering</p>
           </div>
-          <p class="text-gray-600 text-lg mb-4">"I am now studying at a top-ranked university thanks to JaQuest's guidance and scholarship assistance."</p>
-          <p class="font-semibold text-gray-800">Michael Lee</p>
-          <span class="text-gray-500 text-sm">Medical Student</span>
         </div>
+
         <!-- Testimonial 4 -->
-        <div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <div class="flex items-center justify-center mb-4">
-            <img src="student7.jpg" alt="User 4" class="w-16 h-16 rounded-full border-2 border-yellow-500">
+        <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+          <img src="student7.jpg" alt="Student 7" class="w-full h-64 object-cover">
+          <div class="p-6 text-center">
+            <p class="text-gray-600 mb-4">"I'm studying abroad now, all thanks to JaQuest!"</p>
+            <h3 class="font-semibold text-gray-800">Emma Wilson</h3>
+            <p class="text-sm text-gray-500">Health Sciences</p>
           </div>
-          <p class="text-gray-600 text-lg mb-4">"JaQuest gave me the support I needed to apply for multiple scholarships. Highly recommend!"</p>
-          <p class="font-semibold text-gray-800">Emily Clark</p>
-          <span class="text-gray-500 text-sm">Arts Student</span>
         </div>
+
         <!-- Testimonial 5 -->
-        <div class="testimonial w-full max-w-xs bg-white rounded-xl shadow-lg p-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-          <div class="flex items-center justify-center mb-4">
-            <img src="student8.jpg" alt="User 5" class="w-16 h-16 rounded-full border-2 border-yellow-500">
+        <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+          <img src="student8.jpg" alt="Student 8" class="w-full h-64 object-cover">
+          <div class="p-6 text-center">
+            <p class="text-gray-600 mb-4">"Highly professional agency with real success stories."</p>
+            <h3 class="font-semibold text-gray-800">Olivia Davis</h3>
+            <p class="text-sm text-gray-500">Arts and Humanities</p>
           </div>
-          <p class="text-gray-600 text-lg mb-4">"With JaQuest, I was able to find a career-focused program abroad that suited my goals perfectly."</p>
-          <p class="font-semibold text-gray-800">Sophia Green</p>
-          <span class="text-gray-500 text-sm">Computer Science Student</span>
         </div>
 
       </div>
-      <!-- Slider Controls -->
-      <!-- Left Arrow -->
-      <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full focus:outline-none hidden md:block">
-        &#8592;
-      </button>
-      <!-- Right Arrow -->
-      <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full focus:outline-none hidden md:block">
-        &#8594;
-      </button>
+
+      <!-- Navigation Arrows -->
+      <div class="swiper-button-next text-yellow-500"></div>
+      <div class="swiper-button-prev text-yellow-500"></div>
+
+      <!-- Pagination Dots (Optional) -->
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </section>
+
+    
+   
   <!-- Courses Section -->
   <section id="courses" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6 text-center">
@@ -1032,6 +975,40 @@ playBtn.addEventListener('click', () => {
     } else if (touchEnd - touchStart > 50) {
       prevBtn.click();
     }
+  });
+</script>
+  <script>
+  var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    grabCursor: true,
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+      },
+      640: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
   });
 </script>
 </body>
