@@ -215,39 +215,47 @@
     }
   });
 </script>
-    <section class="py-20 bg-gray-100">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-    
-        <!-- Section: Video & Image Left | Text Right -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <!-- Left: Media -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <!-- Video Box -->
-            <div class="relative rounded-3xl overflow-hidden shadow-lg aspect-video">
-              <video id="videoElement" class="w-full h-full object-cover rounded-3xl hidden" controls>
-                <source src="deshbaghat.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              <img id="videoThumb" src="https://via.placeholder.com/600x400.png?text=Video+Thumbnail"
-                alt="Video Thumbnail" class="w-full h-full object-cover rounded-3xl cursor-pointer">
-              <button id="playBtn"
-                class="absolute inset-0 flex items-center justify-center text-white text-5xl bg-black bg-opacity-40 hover:bg-opacity-60 transition duration-300 rounded-3xl">
-                ▶
-              </button>
-            </div>
-            <!-- Image Box -->
-            <div class="rounded-3xl overflow-hidden shadow-lg aspect-video">
-              <img src="student.jpg" alt="Success Photo" class="w-full h-full object-cover rounded-3xl">
-            </div>
+     <!-- Hero Section -->
+  <section class="p-6 pt-10" data-aos="fade-up" data-aos-duration="1200">
+    <div class="max-w-2xl mx-auto text-center space-y-6">
+      <div class="inline-flex items-center px-4 py-2 bg-white rounded-full shadow text-sm font-medium text-gray-700" data-aos="fade-down" data-aos-delay="200">
+        <svg class="w-4 h-4 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.264 3.89a1 1 0 00.95.69h4.1c.969 0 1.371 1.24.588 1.81l-3.317 2.41a1 1 0 00-.364 1.118l1.263 3.89c.3.922-.755 1.688-1.538 1.118l-3.317-2.41a1 1 0 00-1.175 0l-3.317 2.41c-.783.57-1.838-.196-1.538-1.118l1.264-3.89a1 1 0 00-.364-1.118l-3.317-2.41c-.783-.57-.38-1.81.588-1.81h4.1a1 1 0 00.95-.69l1.264-3.89z" />
+        </svg>
+        Welcome to JaQuest Scholarships Education Consultancy
+      </div>
+
+      <h1 class="text-4xl font-bold leading-tight sm:text-5xl" data-aos="fade-up" data-aos-delay="300">
+        Experience Elite Learning from <br />
+        Globally <span class="text-yellow-500">Ranked</span> Universities.
+      </h1>
+
+      <div class="flex justify-center items-center gap-4 flex-wrap" data-aos="zoom-in" data-aos-delay="400">
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-full">
+          Apply Now
+        </button>
+        <a href="#" class="flex items-center text-gray-700">
+          <div class="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center">
+            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M6 4l10 6-10 6V4z" />
+            </svg>
           </div>
-          <!-- Right: Text -->
-          <div class="relative">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">
-              Years of dedication to helping students turn their dreams into reality.
-            </h2>
-            <p class="text-lg text-gray-600">
-              At JaQuest Education Consultancy, we guide students and professionals through admissions, scholarships, and visa processes—turning your global dreams into achievements.
-            </p>
+          <span class="ml-2 font-medium">Watch Here</span>
+        </a>
+      </div>
+
+      <div class="flex items-center justify-center mt-4 text-gray-600 text-sm" data-aos="fade-up" data-aos-delay="500">
+        <img class="w-8 h-8 rounded-full ring-2 ring-white mr-2" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User 1" />
+        <img class="w-8 h-8 rounded-full ring-2 ring-white -ml-3" src="https://randomuser.me/api/portraits/men/45.jpg" alt="User 2" />
+        <span class="ml-4"><span class="text-yellow-500 font-semibold">10k</span> Join thousands of students</span>
+      </div>
+
+      <p class="text-lg font-medium mt-6" data-aos="zoom-in-up" data-aos-delay="600">
+        Explore <span class="text-yellow-500 font-bold">755+</span> Courses and decide for your career.
+      </p>
+    </div>
+  </section>
+
             <!-- Illustration Character -->
             <div class="absolute -top-12 -right-12 hidden lg:block opacity-30 animate-bounce">
               <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" alt="Character Illustration"
@@ -840,6 +848,47 @@ playBtn.addEventListener('click', () => {
       video.classList.remove("hidden");
       video.play();
     });
+  </script>
+   <!-- Fixed Bottom Navbar -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-md border-t border-gray-200 z-50">
+    <div class="flex justify-around items-center py-3 text-yellow-600 text-xs sm:text-sm">
+      <div class="flex flex-col items-center">
+        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10.707 1.707a1 1 0 00-1.414 0L1 10h3v7a1 1 0 001 1h4v-5h2v5h4a1 1 0 001-1v-7h3L10.707 1.707z" />
+        </svg>
+        <span>Home</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 2a2 2 0 012 2v1h-4V4a2 2 0 012-2zM4 7h12v10H4V7zm6 3a1 1 0 00-.993.883L9 11v2a1 1 0 001.993.117L11 13v-2a1 1 0 00-1-1z" />
+        </svg>
+        <span>Services</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M6 3a1 1 0 000 2h1v11a1 1 0 002 0V5h1a1 1 0 000-2H6z" />
+        </svg>
+        <span>Plans</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M3 3a1 1 0 011-1h12a1 1 0 011 1v16l-7-4-7 4V3z" />
+        </svg>
+        <span>Blog</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M18 13V7a1 1 0 00-1-1h-3.586l-2-2H8.586l-2 2H3a1 1 0 00-1 1v6h16zM4 14h12v2H4v-2z" />
+        </svg>
+        <span>Contact</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
   </script>
 </body>
 </html>
