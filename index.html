@@ -235,9 +235,14 @@
         <img class="w-8 h-8 rounded-full ring-2 ring-white -ml-3" src="https://randomuser.me/api/portraits/men/45.jpg" alt="User 2" />
         <span class="ml-4"><span class="text-yellow-500 font-semibold">10k</span> Join thousands of students</span>
       </div>
-     <p class="text-lg font-medium mt-6" data-aos="zoom-in-up" data-aos-delay="600">
+       <p class="text-base font-medium mt-6" data-aos="zoom-in-up" data-aos-delay="600">
   Explore 
-  <span id="animated-count" class="text-yellow-500 font-bold text-2xl md:text-3xl">700</span>+ 
+  <span id="animated-count" class="text-yellow-500 font-bold text-xl md:text-2xl">700+</span> 
+  Courses and decide for your career.
+</p>
+<p class="text-base font-medium mt-6" data-aos="zoom-in-up" data-aos-delay="600">
+  Explore 
+  <span id="animated-count" class="text-yellow-500 font-bold text-xl md:text-2xl">700+</span> 
   Courses and decide for your career.
 </p>
     </div>
@@ -387,7 +392,6 @@ function startJourney() {
             <p class="text-sm text-gray-500">Computer Science</p>
           </div>
         </div>
-
         <!-- Testimonial 3 -->
         <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
           <img src="student6.jpg" alt="Student 6" class="w-full h-64 object-cover">
@@ -397,7 +401,6 @@ function startJourney() {
             <p class="text-sm text-gray-500">Engineering</p>
           </div>
         </div>
-
         <!-- Testimonial 4 -->
         <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
           <img src="student7.jpg" alt="Student 7" class="w-full h-64 object-cover">
@@ -407,7 +410,6 @@ function startJourney() {
             <p class="text-sm text-gray-500">Health Sciences</p>
           </div>
         </div>
-
         <!-- Testimonial 5 -->
         <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
           <img src="student8.jpg" alt="Student 8" class="w-full h-64 object-cover">
@@ -417,21 +419,15 @@ function startJourney() {
             <p class="text-sm text-gray-500">Arts and Humanities</p>
           </div>
         </div>
-
       </div>
-
       <!-- Navigation Arrows -->
       <div class="swiper-button-next text-yellow-500"></div>
       <div class="swiper-button-prev text-yellow-500"></div>
-
       <!-- Pagination Dots (Optional) -->
       <div class="swiper-pagination"></div>
     </div>
   </div>
-</section>
-
-    
-   
+</section>  
   <!-- Courses Section -->
   <section id="courses" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6 text-center">
@@ -1013,32 +1009,36 @@ playBtn.addEventListener('click', () => {
     },
   });
 </script>
-  <script>
+ <script>
   const countEl = document.getElementById('animated-count');
-  let start = 700;
+  const start = 700;
   const end = 755;
-  const duration = 3000; // 3 seconds
+  const duration = 2000; // 3 seconds
   const step = Math.max(Math.floor(duration / (end - start)), 20);
+
+  let interval;
 
   function animateCount() {
     let current = start;
-    const timer = setInterval(() => {
+    clearInterval(interval); // Reset if already running
+    interval = setInterval(() => {
       current++;
-      countEl.textContent = current;
+      countEl.textContent = current + '+';
       if (current >= end) {
-        clearInterval(timer);
+        clearInterval(interval);
       }
     }, step);
   }
-  // Trigger animation only when in view
-  const observer = new IntersectionObserver((entries, obs) => {
+
+  // Observer that triggers every time it's in view
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         animateCount();
-        obs.unobserve(entry.target); // Run once only
       }
     });
-  }, { threshold: 0.6 }); // Trigger when 60% in view
+  }, { threshold: 0.5 }); // Trigger when 50% of element is in view
+
   observer.observe(countEl);
 </script>
 </body>
