@@ -20,70 +20,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-  body 
-    {
-  font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  padding-top: 100px;  /* Adjusted padding to ensure content isn't hidden by the nav bar */
-  }
-  .text-indigo-600 {
-  color: #fbbf24; /* Yellow color for "Global" */
-  }
-  .text-indigo-400 {
-   color: #fbbf24; /* Yellow color for "Dreams" */
-  }
-   .text-shadow-lg {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  }
-   .text-shadow-md {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-   }
-    #mobile-menu:not(.hidden) {
-      animation: slideright 0.4s ease-out;
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      padding-top: 100px;
     }
-    .animate__fadeOut {
-  animation: fadeOut 1s forwards;
-  }
-   @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; display: none; }
-  }
-   @keyframes slideLeft {
-      from { transform: translateX(-100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    .parallax {
-      transform: translateY(var(--scroll, 0px));
-      transition: transform 0.2s ease-out;
-    }
-    .video-parallax {
-      transform: scale(var(--scale, 1));
-      transition: transform 0.2s ease-out;
-    }
-    .globe-icon {
-  animation: bounce 2s infinite ease-in-out alternate;
-}
-.testimonial-slider {
-  will-change: transform;
-}
-@keyframes slideright {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-  .globe-icon {
-    animation: bounce 2s ease-in-out infinite;
-  }
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-30px);
-    }
-  }
-</style>
+    .text-indigo-600 { color: #fbbf24; }
+    .text-indigo-400 { color: #fbbf24; }
+    .text-shadow-lg { text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
+    .text-shadow-md { text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); }
+    #mobile-menu:not(.hidden) { animation: slideright 0.4s ease-out; }
+    .animate__fadeOut { animation: fadeOut 1s forwards; }
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; display: none; } }
+    @keyframes slideLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    .parallax { transform: translateY(var(--scroll, 0px)); transition: transform 0.2s ease-out; }
+    .video-parallax { transform: scale(var(--scale, 1)); transition: transform 0.2s ease-out; }
+    .globe-icon { animation: bounce 2s infinite ease-in-out alternate; }
+    @keyframes slideright { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    .globe-icon { animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
+    .animate-spin-slow { animation: spin 2s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  </style>
 </head>
 <body class="bg-[#f5deb3] text-gray-800">
 <!-- Loading Screen -->
@@ -116,7 +79,7 @@
         <a href="contact.html" class="hover:text-teal-400 transition duration-300">Contact</a>
       </div>
       <div class="md:hidden flex items-center">
-        <button id="menu-button" class="p-2 rounded-lg bg-white text-blue-600 shadow-lg">
+        <button id="menu-button" class="p-2 rounded-lg bg-white text-blue-600 shadow-lg" aria-label="Open Menu">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -126,7 +89,7 @@
   </div>
   <div id="mobile-menu" class="hidden fixed top-0 left-0 w-1/2 h-full bg-[#f5deb3] text-gray-900 shadow-2xl z-50 md:hidden">
     <div class="flex justify-end p-4">
-      <button id="close-menu" class="text-3xl font-bold text-gray-700 hover:text-red-600">&times;</button>
+      <button id="close-menu" class="text-3xl font-bold text-gray-700 hover:text-red-600" aria-label="Close Menu">&times;</button>
     </div>
     <div class="flex flex-col space-y-4 p-6">
       <a href="index.html" class="hover:bg-yellow-300 rounded px-4 py-2">Home</a>
@@ -165,8 +128,8 @@
     </p>
     <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6" data-aos="fade-up" data-aos-delay="600">
       <a href="learn-more.html" class="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-blue-900 transition transform hover:scale-105">
-  Learn More
-</a>
+        Learn More
+      </a>
       <a href="appointment.html" class="px-6 py-3 bg-yellow-500 text-blue-900 font-semibold rounded-full hover:bg-yellow-600 transition">
         Book an Appointment
       </a>
@@ -187,6 +150,8 @@
     mirror: false,
     offset: 100,
   });
+  feather.replace();
+  lucide.createIcons();
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     document.querySelectorAll('.parallax').forEach(el => {
@@ -199,7 +164,122 @@
     }
   });
 </script>
- <!-- Hero Section -->
+<!-- Main Content Sections (as in your original file, unchanged) -->
+  <!-- Hero Section -->
+<section class="p-6 pt-10 bg-white" data-aos="fade-up" data-aos-duration="1200">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+    <!-- Text Content -->
+    <div class="max-w-2xl text-center md:text-left space-y-6">
+      <div class="inline-flex items-center px-4 py-2 bg-white rounded-full shadow text-sm font-medium text-gray-700" data-aos="fade-down" data-aos-delay="200">
+        <svg class="w-4 h-4 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.264 3.89a1 1 0 00.95.69h4.1c.969 0 1.371 1.24.588 1.81l-3.317 2.41a1 1 0 00-.364 1.118l1.263 3.89c.3.922-.755 1.688-1.538 1.118l-3.317-2.41a1 1 0 00-1.175 0l-3.317 2.41c-.783.57-1.838-.196-1.538-1.118l1.264-3.89a1 1 0 00-.364-1.118l-3.317-2.41c-.783-.57-.38-1.81.588-1.81h4.1a1 1 0 00.95-.69l1.264-3.89z" />
+        </svg>
+        Welcome to JaQuest Scholarships Education Consultancy
+      </div>
+      <h1 class="text-4xl font-bold leading-tight sm:text-5xl" data-aos="fade-up" data-aos-delay="300">
+        Experience Elite Learning from <br />
+        Globally <span class="text-yellow-500">Ranked</span> Universities.
+      </h1>
+      <div class="flex justify-center items-center gap-4 flex-wrap" data-aos="zoom-in" data-aos-delay="400">
+        <a href="form.html">
+          <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-full">
+            Apply Now
+          </button>
+        </a>
+<!-- Watch Here Button -->
+<button onclick="openVideoModal()" class="flex items-center text-gray-700 hover:text-yellow-500 transition">
+  <div class="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center hover:bg-yellow-100 transition">
+    <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M6 4l10 6-10 6V4z" />
+    </svg>
+  </div>
+  <span class="ml-2 font-medium">Watch Here</span>
+</button>
+      </div>
+      <div class="flex items-center justify-center mt-4 text-gray-600 text-sm" data-aos="fade-up" data-aos-delay="500">
+        <img class="w-8 h-8 rounded-full ring-2 ring-white mr-2" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User 1" />
+        <img class="w-8 h-8 rounded-full ring-2 ring-white -ml-3" src="https://randomuser.me/api/portraits/men/45.jpg" alt="User 2" />
+        <span class="ml-4"><span class="text-yellow-500 font-semibold">10k</span> Join thousands of students</span>
+      </div>
+       <p class="text-base font-medium mt-6" data-aos="zoom-in-up" data-aos-delay="600">
+  Explore 
+  <span id="animated-count" class="text-yellow-500 font-bold text-xl md:text-2xl">700+</span> 
+  Courses and decide for your career.
+</p>
+    </div>
+    <!-- Image Box (Right side) -->
+    <div class="w-full md:w-1/2 mt-6 md:mt-0 relative">
+      <div class="overflow-hidden rounded-xl shadow-2xl transform transition-all duration-500 hover:scale-105">
+        <img class="w-full h-full object-cover rounded-xl" src="student3.jpg" alt="Scholarships Image" data-aos="fade-left" data-aos-delay="500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black opacity-30 rounded-xl"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Illustration Character Section -->
+<div class="relative overflow-hidden">
+  <!-- Illustration Character Image -->
+  <div class="absolute top-1/2 right-2 sm:right-4 md:right-6 lg:right-10 transform -translate-y-1/2 translate-x-1/3 sm:translate-x-1/4 md:translate-x-0 opacity-95 z-30 animate-bounce">
+    <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" alt="Character Illustration"
+      class="h-20 w-20 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-44 lg:w-44 object-contain transition-transform hover:scale-110 drop-shadow-2xl">
+  </div>
+</div>
+        <!-- Section: Why Choose JAQuest -->
+<section class="py-16 bg-[#f5deb3] text-gray-800">
+  <div class="text-center max-w-3xl mx-auto px-4 mb-12" data-aos="zoom-in" data-aos-duration="800">
+    <h2 class="text-3xl font-bold text-gray-900 mb-4">
+      Why Choose <span class="text-indigo-600">JaQuest</span>?
+    </h2>
+    <p class="text-lg text-gray-700">
+      With over 10 years of dedicated experience, we've empowered hundreds of students with global opportunities through scholarships, admissions, and personalized mentorship.
+    </p>
+  </div>
+  <!-- Features Grid -->
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 px-6 lg:px-16">
+   <!-- Feature 1 -->
+<div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
+  data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+  <div class="text-blue-600 text-4xl mb-4 floating">🛂</div>
+  <h3 class="text-xl font-semibold text-gray-900 mb-2">Visa & Application Guidance</h3>
+  <p class="text-gray-600">Step-by-step support for your admissions and visa journey abroad.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
+  data-aos="fade-left" data-aos-delay="200" data-aos-duration="800">
+  <div class="text-blue-600 text-4xl mb-4 floating">📝</div>
+  <h3 class="text-xl font-semibold text-gray-900 mb-2">Admission Consulting</h3>
+  <p class="text-gray-600">Get expert advice to secure admission into top global institutions.</p>
+</div>
+    <!-- Feature 3 -->
+    <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
+      data-aos="fade-right" data-aos-delay="300" data-aos-duration="800">
+      <div class="text-blue-600 text-4xl mb-4 floating">🎓</div>
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Scholarship Matching</h3>
+      <p class="text-gray-600">We connect you with the most suitable scholarships worldwide.</p>
+    </div>
+    <!-- Feature 4 -->
+    <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
+      data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+      <div class="text-blue-600 text-4xl mb-4 floating">🌍</div>
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Global Network Access</h3>
+      <p class="text-gray-600">Tap into a strong network of universities, mentors, and alumni.</p>
+    </div>
+    <!-- Feature 5 -->
+    <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
+      data-aos="fade-left" data-aos-delay="500" data-aos-duration="800">
+      <div class="text-blue-600 text-4xl mb-4 floating">✈️</div>
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Career Mentorship</h3>
+      <p class="text-gray-600">Ongoing guidance from industry professionals in your chosen field.</p>
+    </div>
+    <!-- Feature 6 -->
+    <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
+      data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
+      <div class="text-blue-600 text-4xl mb-4 floating">🚐</div>
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Travel & Airport Pickups</h3>
+      <p class="text-gray-600">Enjoy smooth arrivals with organized travel plans and reliable airport pickup services for new students.</p>
+    </div>
+  </div>
+</section> <!-- Hero Section -->
 <section class="p-6 pt-10 bg-white" data-aos="fade-up" data-aos-duration="1200">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <!-- Text Content -->
@@ -314,61 +394,49 @@
     </div>
   </div>
 </section>
- <!-- Button -->
+
+<!-- ... (keep your content here, as in your original) ... -->
+
+<!-- Button -->
 <a href="javascript:void(0)" onclick="startJourney()" 
 class="mt-6 inline-block bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-700 transition duration-300">
 Start Your Journey
 </a>
-<!-- Loading Screen -->
+<!-- Loading Screen for Start Journey -->
 <div id="loadingScreen" class="fixed inset-0 bg-white bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-6 hidden transition-opacity duration-300">
-<img src="jaquest.png" alt="JAQuest Logo" class="w-24 h-24 object-contain animate-spin-slow" />
-<div class="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-<p class="text-gray-700 text-lg font-medium">Preparing your journey...</p>
+  <img src="jaquest.png" alt="JAQuest Logo" class="w-24 h-24 object-contain animate-spin-slow" />
+  <div class="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+  <p class="text-gray-700 text-lg font-medium">Preparing your journey...</p>
 </div>
-<!-- Script -->
 <script>
 function startJourney() {
- const loader = document.getElementById("loadingScreen");
- loader.classList.remove("hidden");
- loader.classList.add("opacity-0");
- setTimeout(() => loader.classList.remove("opacity-0"), 50);
- setTimeout(() => {
-   window.location.href = "form.html";
- }, 1200);
+  const loader = document.getElementById("loadingScreen");
+  loader.classList.remove("hidden");
+  loader.classList.add("opacity-0");
+  setTimeout(() => loader.classList.remove("opacity-0"), 50);
+  setTimeout(() => {
+    window.location.href = "form.html";
+  }, 1200);
 }
 </script>
 <style>
 .animate-spin-slow {
- animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
 }
 @keyframes spin {
- from { transform: rotate(0deg); }
- to   { transform: rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 </style>
-    <!-- Video Play Button Script -->
-    <script>
-      document.getElementById("playBtn").addEventListener("click", function () {
-        const video = document.getElementById("videoElement");
-        const thumbnail = document.getElementById("videoThumb");
-        this.style.display = "none";
-        thumbnail.style.display = "none";
-        video.classList.remove("hidden");
-        video.play();
-      });
-    </script>   
-     <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
+<!-- Swiper Testimonials -->
 <section class="py-16 bg-gray-50" id="testimonials" data-aos="fade-up" data-aos-duration="1200">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-12">What Our Students Say</h2>
-
-    <!-- Swiper -->
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        
-        <!-- Testimonial 1 -->
+        <!-- Testimonial slides here (as in your original) -->
+         <!-- Testimonial 1 -->
         <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
           <img src="student4.jpg" alt="Student 4" class="w-full h-64 object-cover">
           <div class="p-6 text-center">
@@ -415,15 +483,15 @@ function startJourney() {
           </div>
         </div>
       </div>
-      <!-- Navigation Arrows -->
+        <!-- ... -->
+      </div>
       <div class="swiper-button-next text-yellow-500"></div>
       <div class="swiper-button-prev text-yellow-500"></div>
-      <!-- Pagination Dots (Optional) -->
       <div class="swiper-pagination"></div>
     </div>
   </div>
-</section>  
-  <!-- Courses Section -->
+</section>
+<!-- Courses Section -->
   <section id="courses" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold text-blue-700 mb-6">Our Courses</h2>
@@ -667,11 +735,63 @@ function startJourney() {
     </div>
   </div>
 </section>
-<!-- AOS Library (for animations) -->
 <script>
-  AOS.init({ duration: 1000, once: true });
+  var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    grabCursor: true,
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      640: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
 </script>
-  <!-- Chat Button -->
+
+<!-- Animated Counter -->
+<script>
+  const countEl = document.getElementById('animated-count');
+  const start = 700;
+  const end = 755;
+  const duration = 2000;
+  const step = Math.max(Math.floor(duration / (end - start)), 20);
+  let interval;
+  function animateCount() {
+    let current = start;
+    clearInterval(interval);
+    interval = setInterval(() => {
+      current++;
+      countEl.textContent = current + '+';
+      if (current >= end) {
+        clearInterval(interval);
+      }
+    }, step);
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount();
+      }
+    });
+  }, { threshold: 0.5 });
+  observer.observe(countEl);
+</script>
+
+<!-- Chat Button -->
 <button onclick="toggleChat()" 
   class="fixed top-1/2 right-4 transform -translate-y-1/2 z-[9999]
          bg-blue-600 hover:bg-blue-700 text-white p-3 md:p-4 
@@ -689,13 +809,70 @@ function startJourney() {
          translate-x-full opacity-0 pointer-events-none">
   <div class="flex items-center justify-between p-4 bg-blue-600 text-white">
     <span class="font-semibold text-sm md:text-base">JaQuest Chat Assistant</span>
-    <button onclick="toggleChat()" class="hover:text-gray-200 focus:outline-none">
+    <button onclick="toggleChat()" class="hover:text-gray-200 focus:outline-none" aria-label="Close Chat">
       <i data-lucide="x" class="w-4 h-4 md:w-5 md:h-5"></i>
     </button>
   </div>
   <iframe src="https://example.com/chatbot" title="Chatbot" 
     class="w-full h-80 md:h-96 border-0"></iframe>
 </div>
+<script>
+  function toggleChat() {
+    const chat = document.getElementById('chatContainer');
+    if (chat.classList.contains('translate-x-full')) {
+      chat.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+      chat.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
+    } else {
+      chat.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
+      chat.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+    }
+  }
+</script>
+
+<!-- Video Popup Modal -->
+<div id="videoModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-500">
+  <div id="modalContent" class="bg-white rounded-2xl overflow-hidden max-w-2xl w-full relative shadow-2xl transform scale-90 opacity-0 transition-all duration-500">
+    <button onclick="closeVideoModal()" class="absolute top-2 right-2 bg-gray-100 rounded-full p-2 hover:bg-gray-200 z-10" aria-label="Close Video">
+      <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 
+        1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 
+        1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 
+        10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+    <div class="aspect-w-16 aspect-h-9">
+      <video id="videoPlayer" src="deshbaghat.mp4" controls class="w-full h-full rounded-b-2xl"></video>
+    </div>
+  </div>
+</div>
+<script>
+  function openVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const modalContent = document.getElementById('modalContent');
+    const video = document.getElementById('videoPlayer');
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+    setTimeout(() => {
+      modalContent.classList.remove('scale-90', 'opacity-0');
+      modalContent.classList.add('scale-100', 'opacity-100');
+    }, 100);
+    video.currentTime = 0;
+    video.play();
+  }
+  function closeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const modalContent = document.getElementById('modalContent');
+    const video = document.getElementById('videoPlayer');
+    video.pause();
+    video.currentTime = 0;
+    modalContent.classList.remove('scale-100', 'opacity-100');
+    modalContent.classList.add('scale-90', 'opacity-0');
+    setTimeout(() => {
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }, 300);
+  }
+</script>
 <!-- Latest News Section -->
 <section class="text-center pt-16 pb-8 px-4" id="news-updates">
   <h2
@@ -761,8 +938,7 @@ function startJourney() {
     <div class="absolute top-5 left-5">
       <span
         class="bg-white text-cyan-600 font-semibold px-4 py-2 rounded-full text-sm"
-        >DEVELOPMENT</span
-      >
+        >DEVELOPMENT</span>
     </div>
     <div class="absolute bottom-5 left-5 right-5 text-white">
       <h3 class="text-2xl font-semibold leading-snug">
@@ -781,7 +957,7 @@ function startJourney() {
     </div>
   </div>
 </section>
-<!-- Scroll to Top Button - Left Center -->
+<!-- Scroll to Top Button -->
 <a
   href="#top"
   class="fixed left-3 top-1/2 transform -translate-y-1/2 bg-cyan-600 hover:bg-cyan-700 text-white p-3 rounded-full shadow-lg z-50 transition-all animate-pulse"
@@ -789,11 +965,10 @@ function startJourney() {
 >
   <i data-feather="arrow-up" class="w-5 h-5"></i>
 </a>
-<script src="https://unpkg.com/feather-icons"></script>
 <script>
-  AOS.init();
   feather.replace();
 </script>
+
 <!-- Footer -->
 <footer class="bg-gray-900 text-gray-400 pt-10 pb-[90px] text-center text-sm" data-aos="fade-up">
   <div class="flex justify-center gap-6 mb-4">
@@ -803,50 +978,7 @@ function startJourney() {
   </div>
   <p>&copy; JaQuest Scholarship Agency. All rights reserved.</p>
 </footer>
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  AOS.init({ duration: 1000, once: true });
-  lucide.createIcons();
-  function toggleChat() {
-    const chat = document.getElementById('chatContainer');
-    if (chat.classList.contains('translate-x-full')) {
-      chat.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
-      chat.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
-    } else {
-      chat.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
-      chat.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
-    }
-  }
-playBtn.addEventListener('click', () => {
-  // Hide the thumbnail and play button
-  videoThumb.classList.add('hidden');
-  playBtn.classList.add('hidden');
-  
-  // Show the video and play it
-  videoElement.classList.remove('hidden');
-  videoElement.play();
-});
-</script>
- <script>
-  AOS.init({
-    once: true,
-    duration: 800,
-    easing: 'ease-in-out'
-  });
-</script>
-  <script>
-    document.getElementById("playBtn").addEventListener("click", function () {
-      const video = document.getElementById("videoElement");
-      const thumbnail = document.getElementById("videoThumb");
-      this.style.display = "none";
-      thumbnail.style.display = "none";
-      video.classList.remove("hidden");
-      video.play();
-    });
-  </script> 
- <!-- Fixed Transparent Blue Bottom Navbar -->
+<!-- Fixed Transparent Blue Bottom Navbar -->
 <nav class="fixed bottom-0 left-0 right-0 bg-blue-900 bg-opacity-70 backdrop-blur-md z-50">
   <div class="flex justify-around items-center py-3 text-white text-xs sm:text-sm">
     <a href="index.html" class="flex flex-col items-center">
@@ -881,163 +1013,5 @@ playBtn.addEventListener('click', () => {
     </a>
   </div>
 </nav>
-<!-- Video Popup Modal -->
-<div id="videoModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-500">
-  <div id="modalContent" class="bg-white rounded-2xl overflow-hidden max-w-2xl w-full relative shadow-2xl transform scale-90 opacity-0 transition-all duration-500">
-    <!-- Close Button -->
-    <button onclick="closeVideoModal()" class="absolute top-2 right-2 bg-gray-100 rounded-full p-2 hover:bg-gray-200 z-10">
-      <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 
-        1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 
-        1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 
-        10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-      </svg>
-    </button>
-    <!-- Video tag instead of iframe -->
-    <div class="aspect-w-16 aspect-h-9">
-      <video id="videoPlayer" src="deshbaghat.mp4" controls class="w-full h-full rounded-b-2xl"></video>
-    </div>
-  </div>
-</div>
-<script>
-  function openVideoModal() {
-    const modal = document.getElementById('videoModal');
-    const modalContent = document.getElementById('modalContent');
-    const video = document.getElementById('videoPlayer');
-    modal.classList.remove('opacity-0', 'pointer-events-none');
-    modal.classList.add('opacity-100', 'pointer-events-auto');
-    // Fade-in effect
-    setTimeout(() => {
-      modalContent.classList.remove('scale-90', 'opacity-0');
-      modalContent.classList.add('scale-100', 'opacity-100');
-    }, 100);
-    video.currentTime = 0; // Start from beginning
-    video.play(); // Auto play
-  }
-  function closeVideoModal() {
-    const modal = document.getElementById('videoModal');
-    const modalContent = document.getElementById('modalContent');
-    const video = document.getElementById('videoPlayer');
-    video.pause();
-    video.currentTime = 0; // Reset video
-    modalContent.classList.remove('scale-100', 'opacity-100');
-    modalContent.classList.add('scale-90', 'opacity-0');
-    setTimeout(() => {
-      modal.classList.remove('opacity-100', 'pointer-events-auto');
-      modal.classList.add('opacity-0', 'pointer-events-none');
-    }, 300);
-  }
-</script>
-  <script>
- <script>
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const testimonials = document.querySelector('.testimonial-slider');
-  const totalSlides = document.querySelectorAll('.testimonial').length;
-  let currentIndex = 0;
-  function updateSlider() {
-    const offset = -currentIndex * 100; // Adjust for one slide at a time
-    testimonials.style.transition = 'transform 0.5s ease';
-    testimonials.style.transform = `translateX(${offset}%)`;
-  }
-  prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-    } else {
-      currentIndex = totalSlides - 1; // Go to last testimonial if at the beginning
-    }
-    updateSlider();
-  });
-  nextBtn.addEventListener('click', () => {
-    if (currentIndex < totalSlides - 1) {
-      currentIndex++;
-    } else {
-      currentIndex = 0; // Go to first testimonial if at the end
-    }
-    updateSlider();
-  });
-  // For Touch Devices (Swiper)
-  let touchStart = 0;
-  testimonials.addEventListener('touchstart', (e) => {
-    touchStart = e.touches[0].clientX;
-  });
-  testimonials.addEventListener('touchend', (e) => {
-    let touchEnd = e.changedTouches[0].clientX;
-    if (touchStart - touchEnd > 50) {
-      nextBtn.click();
-    } else if (touchEnd - touchStart > 50) {
-      prevBtn.click();
-    }
-  });
-</script>
-  <script>
-  var swiper = new Swiper(".mySwiper", {
-    loop: true,
-    grabCursor: true,
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-      },
-      640: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
-    },
-  });
-</script>
- <script>
-  const countEl = document.getElementById('animated-count');
-  const start = 700;
-  const end = 755;
-  const duration = 2000; // 3 seconds
-  const step = Math.max(Math.floor(duration / (end - start)), 20);
-
-  let interval;
-
-  function animateCount() {
-    let current = start;
-    clearInterval(interval); // Reset if already running
-    interval = setInterval(() => {
-      current++;
-      countEl.textContent = current + '+';
-      if (current >= end) {
-        clearInterval(interval);
-      }
-    }, step);
-  }
-
-  // Observer that triggers every time it's in view
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCount();
-      }
-    });
-  }, { threshold: 0.5 }); // Trigger when 50% of element is in view
-
-  observer.observe(countEl);
-</script>
 </body>
 </html>
-
-
-
