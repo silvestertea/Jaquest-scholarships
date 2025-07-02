@@ -1,3 +1,4 @@
+<!-- services.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,15 +46,25 @@
     .nav-link:hover {
       color: #06b6d4;
     }
+    .mobile-nav {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+      .mobile-nav {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800">
-
   <!-- Navbar -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <h1 class="text-2xl font-bold text-cyan-700">JaQuest</h1>
-      <nav class="space-x-6 text-sm md:text-base">
+      <nav class="desktop-nav space-x-6 text-sm md:text-base">
         <a href="index.html" class="nav-link">Home</a>
         <a href="services.html" class="nav-link">Services</a>
         <a href="about.html" class="nav-link">About</a>
@@ -61,16 +72,29 @@
         <a href="contact.html" class="nav-link">Contact</a>
         <a href="form.html" class="bg-cyan-600 text-white px-4 py-2 rounded-full hover:bg-cyan-700 transition text-sm">Apply Now</a>
       </nav>
+      <div class="mobile-nav">
+        <button id="menuToggle" class="text-cyan-700 focus:outline-none">
+          ☰
+        </button>
+        <div id="mobileMenu" class="hidden absolute top-full right-4 bg-white rounded-lg shadow-lg p-4 space-y-2">
+          <a href="index.html" class="block nav-link">Home</a>
+          <a href="services.html" class="block nav-link">Services</a>
+          <a href="about.html" class="block nav-link">About</a>
+          <a href="blog.html" class="block nav-link">Blog</a>
+          <a href="contact.html" class="block nav-link">Contact</a>
+          <a href="form.html" class="block bg-cyan-600 text-white px-4 py-2 rounded-full hover:bg-cyan-700 transition text-sm">Apply Now</a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Hero Section with Playable Video -->
-  <section class="relative w-full h-screen flex items-center justify-center bg-gradient-to-r from-blue-900 via-cyan-900 to-blue-800">
+  <!-- Hero Section -->
+  <section class="relative w-full min-h-[80vh] flex items-center justify-center bg-gradient-to-r from-blue-900 via-cyan-900 to-blue-800">
     <img src="student.jpg" alt="Cover" class="absolute w-full h-full object-cover opacity-60">
     <div class="relative z-10 text-center px-4">
-      <h1 class="text-white text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">Discover Your Global Future</h1>
-      <p class="text-cyan-100 mb-6 text-lg md:text-xl max-w-2xl mx-auto">Join thousands of students across the world building better careers with JaQuest Scholarships.</p>
-      <button onclick="document.getElementById('videoModal').classList.remove('hidden')" class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-8 py-3 rounded-full hover:from-cyan-600 hover:to-blue-600 transition text-lg font-semibold shadow-lg">
+      <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">Discover Your Global Future</h1>
+      <p class="text-cyan-100 mb-6 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">Join thousands of students across the world building better careers with JaQuest Scholarships.</p>
+      <button onclick="document.getElementById('videoModal').classList.remove('hidden')" class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full hover:from-cyan-600 hover:to-blue-600 transition text-base sm:text-lg font-semibold shadow-lg">
         ▶ Watch Our Video
       </button>
     </div>
@@ -87,41 +111,40 @@
   </section>
 
   <!-- Blog Section -->
-  <section class="bg-gray-50 py-16 px-6 md:px-12 lg:px-24">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+  <section class="bg-gray-50 py-16 px-4 sm:px-6 md:px-12 lg:px-24">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
       <div class="md:col-span-2 space-y-10">
-        <article class="bg-white p-8 rounded-xl shadow-md">
-          <div class="flex items-center text-sm text-gray-500 mb-4 space-x-4">
+        <article class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+          <div class="flex flex-wrap items-center text-sm text-gray-500 mb-4 gap-x-4 gap-y-2">
             <span class="flex items-center"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m2 0a8 8 0 11-16 0 8 8 0 0116 0z"/></svg> Development</span>
             <span>December 12, 2024</span>
             <span>No Comments</span>
           </div>
-          <h2 class="text-2xl font-bold text-gray-800 mb-4">The Importance of Integrating Arts into Science and Technology</h2>
+          <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4">The Importance of Integrating Arts into Science and Technology</h2>
           <p class="text-gray-600 mb-6">Get Started React JS Tutorial For Beginners. Uniquely pursue emerging experiences before liemerging content. Efficiently underwhelm customer directed total linkage after B2C synergy. [...]</p>
-          <a href="#" class="inline-block bg-cyan-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-cyan-700 transition">Read More</a>
+          <a href="#" class="inline-block bg-cyan-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-cyan-700 transition text-sm sm:text-base">Read More</a>
         </article>
-        <!-- Add more articles here if needed -->
       </div>
       <aside class="space-y-6">
         <div class="bg-white p-6 rounded-xl shadow-md">
-          <h3 class="text-xl font-semibold mb-4">Latest Posts</h3>
+          <h3 class="text-lg sm:text-xl font-semibold mb-4">Latest Posts</h3>
           <div class="space-y-4">
             <div class="flex items-center space-x-4">
-              <img src="student2.jpg" class="w-16 h-16 rounded object-cover" alt="Post Thumbnail">
+              <img src="student2.jpg" class="w-14 h-14 sm:w-16 sm:h-16 rounded object-cover" alt="Post Thumbnail">
               <div>
                 <h4 class="text-sm font-semibold">Student Achievement Best Practice For</h4>
                 <p class="text-xs text-gray-500">12. Dec, 2024</p>
               </div>
             </div>
             <div class="flex items-center space-x-4">
-              <img src="student1.jpg" class="w-16 h-16 rounded object-cover" alt="Post Thumbnail">
+              <img src="student1.jpg" class="w-14 h-14 sm:w-16 sm:h-16 rounded object-cover" alt="Post Thumbnail">
               <div>
                 <h4 class="text-sm font-semibold">The Importance Of Integrating Arts</h4>
                 <p class="text-xs text-gray-500">12. Dec, 2024</p>
               </div>
             </div>
             <div class="flex items-center space-x-4">
-              <img src="student.jpg" class="w-16 h-16 rounded object-cover" alt="Post Thumbnail">
+              <img src="student.jpg" class="w-14 h-14 sm:w-16 sm:h-16 rounded object-cover" alt="Post Thumbnail">
               <div>
                 <h4 class="text-sm font-semibold">Building Resilience And Empathy In</h4>
                 <p class="text-xs text-gray-500">12. Dec, 2024</p>
@@ -135,9 +158,10 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
+    AOS.init({ duration: 1000, once: true });
+    document.getElementById('menuToggle')?.addEventListener('click', () => {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
     });
   </script>
 </body>
