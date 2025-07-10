@@ -1,10 +1,9 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home | JaQuest Scholarships</title>
+  <title>Contact | JaQuest Scholarships</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
@@ -14,7 +13,7 @@
 </head>
 <body class="bg-gray-900 text-gray-200">
 
-  <!-- Navbar (Fixed + Responsive) -->
+  <!-- Navbar -->
   <header class="bg-gray-800 shadow fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <h1 class="text-2xl font-bold text-blue-400">JaQuest Scholarships</h1>
@@ -39,33 +38,26 @@
   </header>
 
   <main class="pt-24">
-    <!-- Hero Example -->
+    <!-- Hero -->
     <section class="py-20 bg-blue-700 text-white text-center" data-aos="fade-up">
       <div class="max-w-3xl mx-auto px-6">
-        <h2 class="text-4xl font-bold mb-4">Welcome to JaQuest</h2>
-        <p class="text-lg">Your trusted guide to global scholarships</p>
-      </div>
-    </section>
-    <!-- Contact CTA -->
-    <section class="bg-gray-700 py-16" data-aos="fade-up">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <h3 class="text-2xl font-semibold text-white mb-4">Need help getting started?</h3>
-        <p class="text-gray-300 mb-6">Reach out to our expert advisors to plan your scholarship journey.</p>
-        <a href="#contact" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition">Contact Us</a>
+        <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
+        <p class="text-lg">We’d love to hear from you!</p>
       </div>
     </section>
 
-    <!-- Contact Info Section -->
+    <!-- Contact Info & Form -->
     <section id="contact" class="py-20 bg-gray-800" data-aos="fade-up">
       <div class="max-w-4xl mx-auto px-6">
-        <h2 class="text-4xl font-bold text-blue-400 text-center mb-8">Contact Us</h2>
+        <h2 class="text-4xl font-bold text-blue-400 text-center mb-8">Get in Touch</h2>
         <div class="grid md:grid-cols-2 gap-8">
           <div class="space-y-4 text-lg text-gray-300">
             <p><strong>Email:</strong> <a href="mailto:help.jaquest04@gmail.com" class="text-blue-300 hover:underline">help.jaquest04@gmail.com</a></p>
             <p><strong>WhatsApp:</strong> <a href="https://wa.me/919779787934" class="text-green-400 hover:underline">+91 97797 87934</a></p>
-            <p>We are available Monday to Saturday to assist you with your scholarship needs.</p>
+            <p>We’re available Monday to Saturday to assist you with your scholarship needs.</p>
           </div>
-          <form action="#" method="POST" class="space-y-4">
+
+          <form id="contactForm" class="space-y-4">
             <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-600 bg-gray-900 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
             <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 border border-gray-600 bg-gray-900 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
             <textarea name="message" rows="5" placeholder="Your Message" required class="w-full px-4 py-3 border border-gray-600 bg-gray-900 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
@@ -76,12 +68,54 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="bg-gray-900 text-white py-6 text-center">
     <p>&copy; 2025 JaQuest Scholarships. All rights reserved.</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
+
+  <!-- 📩 Contact Form Script -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const data = { name, email, message };
+
+      try {
+        const response = await fetch('http://localhost:5000/api/contacts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert("✅ Your message has been sent!");
+          form.reset();
+        } else {
+          alert("❌ Something went wrong. Please try again.");
+        }
+
+      } catch (err) {
+        console.error(err);
+        alert("❌ Failed to send message.");
+      }
+    });
+  });
+  </script>
+
 </body>
 </html>
