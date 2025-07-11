@@ -20,50 +20,49 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <style>
-  body 
-    {
+ <style>
+body {
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  padding-top: 100px;  /* Adjusted padding to ensure content isn't hidden by the nav bar */
-  }
-  .text-indigo-600 {
+  padding-top: 100px; /* Adjusted padding to ensure content isn't hidden by the nav bar */
+}
+.text-indigo-600 {
   color: #fbbf24; /* Yellow color for "Global" */
-  }
-  .text-indigo-400 {
-   color: #fbbf24; /* Yellow color for "Dreams" */
-  }
-   .text-shadow-lg {
+}
+.text-indigo-400 {
+  color: #fbbf24; /* Yellow color for "Dreams" */
+}
+.text-shadow-lg {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  }
-   .text-shadow-md {
+}
+.text-shadow-md {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-   }
-    #mobile-menu:not(.hidden) {
-      animation: slideright 0.4s ease-out;
-    }
-    .animate__fadeOut {
+}
+#mobile-menu:not(.hidden) {
+  animation: slideright 0.4s ease-out;
+}
+.animate__fadeOut {
   animation: fadeOut 1s forwards;
-  }
-   @keyframes fadeOut {
+}
+@keyframes fadeOut {
   from { opacity: 1; }
   to { opacity: 0; display: none; }
-  }
-   @keyframes slideLeft {
-      from { transform: translateX(-100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    .parallax {
-      transform: translateY(var(--scroll, 0px));
-      transition: transform 0.2s ease-out;
-    }
-    .video-parallax {
-      transform: scale(var(--scale, 1));
-      transition: transform 0.2s ease-out;
-    }
-    .globe-icon {
-  animation: bounce 2s infinite ease-in-out alternate;
+}
+@keyframes slideLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.parallax {
+  transform: translateY(var(--scroll, 0px));
+  transition: transform 0.2s ease-out;
+}
+.video-parallax {
+  transform: scale(var(--scale, 1));
+  transition: transform 0.2s ease-out;
+}
+.globe-icon {
+  animation: bounce 2s ease-in-out infinite;
 }
 .testimonial-slider {
   will-change: transform;
@@ -72,78 +71,41 @@
   from { transform: translateX(-100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
-  .globe-icon {
-    animation: bounce 2s ease-in-out infinite;
+.gradient-text {
+  background: linear-gradient(to right, #3b82f6, #06b6d4);
+  /* Use vendor prefixes first, then the standard property last for best compatibility and to avoid warnings */
+  -webkit-background-clip: text;      /* For Chrome, Safari, Edge */
+  background-clip: text;              /* Standard property for future support */
+  color: transparent;                 /* Fallback for browsers that don't support background-clip:text */
+  -webkit-text-fill-color: transparent; /* For Chrome, Safari, Edge */
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+.service-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #3b82f6;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.service-link:hover {
+  color: #06b6d4;
+}
+.rounded-custom {
+  border-radius: 100px 0 100px 0;
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
   }
-     {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    .gradient-text {
-      background: linear-gradient(to right, #3b82f6, #06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      transition: all 0.3s ease-in-out;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-    .service-link {
-      display: inline-block;
-      margin-top: 1rem;
-      color: #3b82f6;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    .service-link:hover {
-      color: #06b6d4;
-    }
-    .rounded-custom {
-      border-radius: 100px 0 100px 0;
-    }
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-30px);
-    }
+  50% {
+    transform: translateY(-30px);
   }
+}
 </style>
-</head>
-<body class="bg-[#f5deb3] text-gray-800">
-<!-- Loading Screen -->
-<div id="loading-screen" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center transition-opacity duration-300">
-  <div class="flex flex-col items-center">
-    <div class="relative w-20 h-20 mb-3">
-      <!-- Spinning ring -->
-      <span class="absolute inset-0 rounded-full border-4 border-blue-500 border-t-transparent animate-spin"></span>
-      <!-- Logo centered inside the ring -->
-      <img src="jaquestlogo.jpg" alt="JaQuest Logo" class="absolute inset-2 w-16 h-16 object-contain rounded-full shadow" style="left:8px;top:8px;">
-    </div>
-    <span class="text-blue-700 font-semibold text-lg tracking-wide">JaQuest is loading...</span>
-  </div>
-</div>
-<style>
-  .animate-spin {
-    animation: spin 1s linear infinite;
-  }
-  @keyframes spin {
-    100% { transform: rotate(360deg); }
-  }
-</style>
-<script>
-  // Hide loader as soon as DOM is interactive and visually fade out
-  document.addEventListener('DOMContentLoaded', function () {
-    const loader = document.getElementById('loading-screen');
-    loader.style.opacity = '0';
-    loader.style.pointerEvents = 'none';
-    setTimeout(() => loader.style.display = 'none', 300);
-  });
-</script>
 <!-- Navbar -->
 <nav class="fixed top-0 left-0 w-full bg-blue-600 text-white shadow-md z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,7 +122,7 @@
         <a href="contact.html" class="hover:text-teal-400 transition duration-300">Contact</a>
       </div>
       <div class="md:hidden flex items-center">
-        <button id="menu-button" class="p-2 rounded-lg bg-white text-blue-600 shadow-lg">
+        <button id="menu-button" class="p-2 rounded-lg bg-white text-blue-600 shadow-lg" aria-label="Open menu">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -170,7 +132,7 @@
   </div>
   <div id="mobile-menu" class="hidden fixed top-0 left-0 w-1/2 h-full bg-[#f5deb3] text-gray-900 shadow-2xl z-50 md:hidden">
     <div class="flex justify-end p-4">
-      <button id="close-menu" class="text-3xl font-bold text-gray-700 hover:text-red-600">&times;</button>
+      <button id="close-menu" class="text-3xl font-bold text-gray-700 hover:text-red-600" aria-label="Close menu">&times;</button>
     </div>
     <div class="flex flex-col space-y-4 p-6">
       <a href="index.html" class="hover:bg-yellow-300 rounded px-4 py-2">Home</a>
@@ -182,21 +144,28 @@
   </div>
 </nav>
 <script>
-  const menuBtn = document.getElementById('menu-button');
-  const closeBtn = document.getElementById('close-menu');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-  });
-  closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuBtn = document.getElementById('menu-button');
+    const closeBtn = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+      });
+    }
+    if (closeBtn && mobileMenu) {
+      closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    }
   });
 </script>
 <!-- Hero Section -->
 <section class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden text-white">
   <div class="absolute inset-0 z-0 video-parallax">
     <video autoplay muted loop playsinline class="w-full h-full object-cover">
-      <source src="deshbaghat.mp4" type="video/mp4">
+      <source src="deshbaghat.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
     </video>
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-transparent"></div>
   </div>
@@ -209,8 +178,8 @@
     </p>
     <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6" data-aos="fade-up" data-aos-delay="600">
       <a href="learn-more.html" class="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-blue-900 transition transform hover:scale-105">
-  Learn More
-</a>
+        Learn More
+      </a>
       <a href="appointment.html" class="px-6 py-3 bg-yellow-500 text-blue-900 font-semibold rounded-full hover:bg-yellow-600 transition">
         Book an Appointment
       </a>
@@ -243,7 +212,7 @@
     }
   });
 </script>
- <!-- Hero Section -->
+<!-- Hero Section -->
 <section class="p-6 pt-10 bg-white" data-aos="fade-up" data-aos-duration="1200">
   <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <!-- Text Content -->
@@ -264,26 +233,26 @@
             Apply Now
           </button>
         </a>
-<!-- Watch Here Button -->
-<button onclick="openVideoModal()" class="flex items-center text-gray-700 hover:text-yellow-500 transition">
-  <div class="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center hover:bg-yellow-100 transition">
-    <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M6 4l10 6-10 6V4z" />
-    </svg>
-  </div>
-  <span class="ml-2 font-medium">Watch Here</span>
-</button>
+        <!-- Watch Here Button -->
+        <button type="button" onclick="openVideoModal()" class="flex items-center text-gray-700 hover:text-yellow-500 transition">
+          <div class="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center hover:bg-yellow-100 transition">
+            <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M6 4l10 6-10 6V4z" />
+            </svg>
+          </div>
+          <span class="ml-2 font-medium">Watch Here</span>
+        </button>
       </div>
       <div class="flex items-center justify-center mt-4 text-gray-600 text-sm" data-aos="fade-up" data-aos-delay="500">
         <img class="w-8 h-8 rounded-full ring-2 ring-white mr-2" src="https://randomuser.me/api/portraits/men/32.jpg" alt="User 1" />
         <img class="w-8 h-8 rounded-full ring-2 ring-white -ml-3" src="https://randomuser.me/api/portraits/men/45.jpg" alt="User 2" />
         <span class="ml-4"><span class="text-yellow-500 font-semibold">10k</span> Join thousands of students</span>
       </div>
-       <p class="text-base font-medium mt-6" data-aos="zoom-in-up" data-aos-delay="600">
-  Explore 
-  <span id="animated-count" class="text-yellow-500 font-bold text-xl md:text-2xl">700+</span> 
-  Courses and decide for your career.
-</p>
+      <p class="text-base font-medium mt-6" data-aos="zoom-in-up" data-aos-delay="600">
+        Explore 
+        <span id="animated-count" class="text-yellow-500 font-bold text-xl md:text-2xl">700+</span> 
+        Courses and decide for your career.
+      </p>
     </div>
     <!-- Image Box (Right side) -->
     <div class="w-full md:w-1/2 mt-6 md:mt-0 relative">
@@ -302,7 +271,8 @@
       class="h-20 w-20 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-44 lg:w-44 object-contain transition-transform hover:scale-110 drop-shadow-2xl">
   </div>
 </div>
-        <!-- Section: Why Choose JAQuest -->
+
+<!-- Section: Why Choose JAQuest -->
 <section class="py-16 bg-[#f5deb3] text-gray-800">
   <div class="text-center max-w-3xl mx-auto px-4 mb-12" data-aos="zoom-in" data-aos-duration="800">
     <h2 class="text-3xl font-bold text-gray-900 mb-4">
@@ -314,20 +284,20 @@
   </div>
   <!-- Features Grid -->
   <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 px-6 lg:px-16">
-   <!-- Feature 1 -->
-<div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
-  data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-  <div class="text-blue-600 text-4xl mb-4 floating">🛂</div>
-  <h3 class="text-xl font-semibold text-gray-900 mb-2">Visa & Application Guidance</h3>
-  <p class="text-gray-600">Step-by-step support for your admissions and visa journey abroad.</p>
-</div>
-<!-- Feature 2 -->
-<div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
-  data-aos="fade-left" data-aos-delay="200" data-aos-duration="800">
-  <div class="text-blue-600 text-4xl mb-4 floating">📝</div>
-  <h3 class="text-xl font-semibold text-gray-900 mb-2">Admission Consulting</h3>
-  <p class="text-gray-600">Get expert advice to secure admission into top global institutions.</p>
-</div>
+    <!-- Feature 1 -->
+    <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
+      data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+      <div class="text-blue-600 text-4xl mb-4 floating">🛂</div>
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Visa & Application Guidance</h3>
+      <p class="text-gray-600">Step-by-step support for your admissions and visa journey abroad.</p>
+    </div>
+    <!-- Feature 2 -->
+    <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
+      data-aos="fade-left" data-aos-delay="200" data-aos-duration="800">
+      <div class="text-blue-600 text-4xl mb-4 floating">📝</div>
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Admission Consulting</h3>
+      <p class="text-gray-600">Get expert advice to secure admission into top global institutions.</p>
+    </div>
     <!-- Feature 3 -->
     <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2"
       data-aos="fade-right" data-aos-delay="300" data-aos-duration="800">
@@ -358,73 +328,75 @@
     </div>
   </div>
 </section>
- <!-- Button -->
+<!-- Button -->
 <a href="javascript:void(0)" onclick="startJourney()" 
-class="mt-6 inline-block bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-700 transition duration-300">
-Start Your Journey
+  class="mt-6 inline-block bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-700 transition duration-300">
+  Start Your Journey
 </a>
 <!-- Loading Screen -->
 <div id="loadingScreen" class="fixed inset-0 bg-white bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-6 hidden transition-opacity duration-300">
-<img src="jaquestlogo.jpg" alt="JAQuest Logo" class="w-24 h-24 object-contain animate-spin-slow" />
-<div class="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-<p class="text-gray-700 text-lg font-medium">Preparing your journey...</p>
+  <img src="jaquestlogo.jpg" alt="JAQuest Logo" class="w-24 h-24 object-contain animate-spin-slow" />
+  <div class="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+  <p class="text-gray-700 text-lg font-medium">Preparing your journey...</p>
 </div>
 <!-- Script -->
 <script>
 function startJourney() {
- const loader = document.getElementById("loadingScreen");
- loader.classList.remove("hidden");
- loader.classList.add("opacity-0");
- setTimeout(() => loader.classList.remove("opacity-0"), 50);
- setTimeout(() => {
-   window.location.href = "form.html";
- }, 1200);
+  const loader = document.getElementById("loadingScreen");
+  loader.classList.remove("hidden");
+  loader.classList.add("opacity-0");
+  setTimeout(() => loader.classList.remove("opacity-0"), 50);
+  setTimeout(() => {
+    window.location.href = "form.html";
+  }, 1200);
 }
 </script>
 <style>
 .animate-spin-slow {
- animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
 }
 @keyframes spin {
- from { transform: rotate(0deg); }
- to   { transform: rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 </style>
-    <!-- Video Play Button Script -->
-    <script>
-      document.getElementById("playBtn").addEventListener("click", function () {
-        const video = document.getElementById("videoElement");
-        const thumbnail = document.getElementById("videoThumb");
-        this.style.display = "none";
-        thumbnail.style.display = "none";
+<!-- Video Play Button Script -->
+<script>
+  // Only run if playBtn exists on the page
+  const playBtn = document.getElementById("playBtn");
+  if (playBtn) {
+    playBtn.addEventListener("click", function () {
+      const video = document.getElementById("videoElement");
+      const thumbnail = document.getElementById("videoThumb");
+      this.style.display = "none";
+      if (thumbnail) thumbnail.style.display = "none";
+      if (video) {
         video.classList.remove("hidden");
         video.play();
-      });
-    </script>   
-     <!-- Swiper CSS -->
+      }
+    });
+  }
+</script>
+<!-- Swiper CSS (should be in <head>, but left here if needed for context) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
 <section class="py-16 bg-gray-50" id="testimonials" data-aos="fade-up" data-aos-duration="1200">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-12">What Our Students Say</h2>
-
     <!-- Swiper -->
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        
         <!-- Testimonial 1 -->
         <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-          <img src="student4.jpg" alt="Student 4" class="w-full h-64 object-cover">
+          <img src="student4.jpg" alt="Student 4" class="w-full h-64 object-cover" />
           <div class="p-6 text-center">
             <p class="text-gray-600 mb-4">"JaQuest opened new doors for my education journey."</p>
             <h3 class="font-semibold text-gray-800">John Smith</h3>
             <p class="text-sm text-gray-500">Business Management</p>
           </div>
         </div>
-
         <!-- Testimonial 2 -->
         <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-          <img src="student5.jpg" alt="Student 5" class="w-full h-64 object-cover">
+          <img src="student5.jpg" alt="Student 5" class="w-full h-64 object-cover" />
           <div class="p-6 text-center">
             <p class="text-gray-600 mb-4">"The best consultancy for overseas education. Highly recommend."</p>
             <h3 class="font-semibold text-gray-800">Sara Lee</h3>
@@ -433,7 +405,7 @@ function startJourney() {
         </div>
         <!-- Testimonial 3 -->
         <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-          <img src="student6.jpg" alt="Student 6" class="w-full h-64 object-cover">
+          <img src="student6.jpg" alt="Student 6" class="w-full h-64 object-cover" />
           <div class="p-6 text-center">
             <p class="text-gray-600 mb-4">"Visa and admission process was made so easy by JaQuest."</p>
             <h3 class="font-semibold text-gray-800">Michael Tan</h3>
@@ -442,7 +414,7 @@ function startJourney() {
         </div>
         <!-- Testimonial 4 -->
         <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-          <img src="student7.jpg" alt="Student 7" class="w-full h-64 object-cover">
+          <img src="student7.jpg" alt="Student 7" class="w-full h-64 object-cover" />
           <div class="p-6 text-center">
             <p class="text-gray-600 mb-4">"I'm studying abroad now, all thanks to JaQuest!"</p>
             <h3 class="font-semibold text-gray-800">Emma Wilson</h3>
@@ -451,189 +423,191 @@ function startJourney() {
         </div>
         <!-- Testimonial 5 -->
         <div class="swiper-slide group bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-          <img src="student8.jpg" alt="Student 8" class="w-full h-64 object-cover">
-          <div class="p-6 text-center">
-            <p class="text-gray-600 mb-4">"Highly professional agency with real success stories."</p>
-            <h3 class="font-semibold text-gray-800">Olivia Davis</h3>
-            <p class="text-sm text-gray-500">Arts and Humanities</p>
-          </div>
-        </div>
+  <img src="student8.jpg" alt="Student 8" class="w-full h-64 object-cover" />
+  <div class="p-6 text-center">
+    <p class="text-gray-600 mb-4">"Highly professional agency with real success stories."</p>
+    <h3 class="font-semibold text-gray-800">Olivia Davis</h3>
+    <p class="text-sm text-gray-500">Arts and Humanities</p>
+  </div>
+</div>
+</div>
+<!-- Navigation Arrows -->
+<div class="swiper-button-next text-yellow-500"></div>
+<div class="swiper-button-prev text-yellow-500"></div>
+<!-- Pagination Dots (Optional) -->
+<div class="swiper-pagination"></div>
+</div>
+</div>
+</section>
+<!-- Courses Section -->
+<section id="courses" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-blue-700 mb-6">Our Courses</h2>
+    <p class="text-gray-600 text-lg mb-12">Explore the wide range of courses we offer.</p>
+    <div class="grid gap-10 md:grid-cols-3">
+      <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Undergraduate Programs</h3>
+        <p class="text-gray-600">Access fully funded programs in top universities worldwide.</p>
       </div>
-      <!-- Navigation Arrows -->
-      <div class="swiper-button-next text-yellow-500"></div>
-      <div class="swiper-button-prev text-yellow-500"></div>
-      <!-- Pagination Dots (Optional) -->
-      <div class="swiper-pagination"></div>
+      <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Postgraduate Programs</h3>
+        <p class="text-gray-600">Pursue your master's or PhD with global support and mentorship.</p>
+      </div>
+      <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Short-Term Certifications</h3>
+        <p class="text-gray-600">Enhance your skills with short courses in various fields.</p>
+      </div>
+      <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Language Proficiency</h3>
+        <p class="text-gray-600">Prepare for IELTS, TOEFL, and more with expert coaching.</p>
+      </div>
+      <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">Professional Development</h3>
+        <p class="text-gray-600">Advance your career with skill-based learning.</p>
+      </div>
+      <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+        <h3 class="text-xl font-semibold mb-2 text-blue-800">STEM Programs</h3>
+        <p class="text-gray-600">Join cutting-edge STEM programs with hands-on training.</p>
+      </div>
     </div>
   </div>
-</section>  
-  <!-- Courses Section -->
-  <section id="courses" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-blue-700 mb-6">Our Courses</h2>
-      <p class="text-gray-600 text-lg mb-12">Explore the wide range of courses we offer.</p>
-      <div class="grid gap-10 md:grid-cols-3">
-        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">Undergraduate Programs</h3>
-          <p class="text-gray-600">Access fully funded programs in top universities worldwide.</p>
-        </div>
-        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">Postgraduate Programs</h3>
-          <p class="text-gray-600">Pursue your master's or PhD with global support and mentorship.</p>
-        </div>
-        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">Short-Term Certifications</h3>
-          <p class="text-gray-600">Enhance your skills with short courses in various fields.</p>
-        </div>
-        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">Language Proficiency</h3>
-          <p class="text-gray-600">Prepare for IELTS, TOEFL, and more with expert coaching.</p>
-        </div>
-        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">Professional Development</h3>
-          <p class="text-gray-600">Advance your career with skill-based learning.</p>
-        </div>
-        <div class="bg-[#f5faff] p-8 rounded-2xl shadow-lg hover:scale-105 transition duration-500">
-          <h3 class="text-xl font-semibold mb-2 text-blue-800">STEM Programs</h3>
-          <p class="text-gray-600">Join cutting-edge STEM programs with hands-on training.</p>
-        </div>
+</section>
+<!-- Enhanced Course Categories Section -->
+<div class="p-6 bg-gray-50">
+  <h2 class="text-3xl md:text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 mb-6 animate__animated animate__fadeIn animate__delay-1s">
+    Select the course you want to learn and let's help you with your application
+  </h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
+    <!-- Category Card -->
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-cyan-100 rounded-full">
+        <i data-lucide="laptop" class="w-5 h-5 text-cyan-600"></i>
       </div>
+      <span class="text-sm font-semibold text-gray-800">Computer Eng & Sci</span>
     </div>
-  </section>
-  <!-- Enhanced Course Categories Section -->
-  <div class="p-6 bg-gray-50">
-    <h2 class="text-3xl md:text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 mb-6 animate__animated animate__fadeIn animate__delay-1s">
-      Select the course you want to learn and let's help you with your application
-    </h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-cyan-100 rounded-full">
-          <i data-lucide="laptop" class="w-5 h-5 text-cyan-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Computer Eng & Sci</span>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-indigo-100 rounded-full">
+        <i data-lucide="settings" class="w-5 h-5 text-indigo-600"></i>
       </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-indigo-100 rounded-full">
-          <i data-lucide="settings" class="w-5 h-5 text-indigo-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Engineering</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-pink-100 rounded-full">
-          <i data-lucide="atom" class="w-5 h-5 text-pink-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Applied Sciences</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-green-100 rounded-full">
-          <i data-lucide="globe" class="w-5 h-5 text-green-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Hospitality</span>
-      </div> 
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-yellow-100 rounded-full">
-          <i data-lucide="briefcase" class="w-5 h-5 text-yellow-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Business</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-purple-100 rounded-full">
-          <i data-lucide="badge-percent" class="w-5 h-5 text-purple-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Polytechnic</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-blue-100 rounded-full">
-          <i data-lucide="book-open" class="w-5 h-5 text-blue-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Liberal Education</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-lime-100 rounded-full">
-          <i data-lucide="heart-pulse" class="w-5 h-5 text-lime-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Allied Health</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-orange-100 rounded-full">
-          <i data-lucide="paintbrush" class="w-5 h-5 text-orange-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Fine Arts</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-rose-100 rounded-full">
-          <i data-lucide="drama" class="w-5 h-5 text-rose-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Performing Arts</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-teal-100 rounded-full">
-          <i data-lucide="leaf" class="w-5 h-5 text-teal-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Agriculture</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-red-100 rounded-full">
-          <i data-lucide="stethoscope" class="w-5 h-5 text-red-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Nursing</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-emerald-100 rounded-full">
-          <i data-lucide="brain" class="w-5 h-5 text-emerald-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Psychology</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-fuchsia-100 rounded-full">
-          <i data-lucide="scale" class="w-5 h-5 text-fuchsia-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Law</span>
-      </div>  
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-sky-100 rounded-full">
-          <i data-lucide="user-cog" class="w-5 h-5 text-sky-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Social Work</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-zinc-100 rounded-full">
-          <i data-lucide="glasses" class="w-5 h-5 text-zinc-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Education</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-amber-100 rounded-full">
-          <i data-lucide="ruler" class="w-5 h-5 text-amber-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Architecture</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-indigo-200 rounded-full">
-          <i data-lucide="cross" class="w-5 h-5 text-indigo-600"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Theology</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-gray-200 rounded-full">
-          <i data-lucide="newspaper" class="w-5 h-5 text-gray-700"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Journalism</span>
-      </div>
-      <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <div class="p-2 bg-blue-200 rounded-full">
-          <i data-lucide="plane" class="w-5 h-5 text-blue-700"></i>
-        </div>
-        <span class="text-sm font-semibold text-gray-800">Aviation</span>
-      </div>
+      <span class="text-sm font-semibold text-gray-800">Engineering</span>
     </div>
-    <div class="text-center">
-      <a href="courses.html" class="inline-block px-6 py-3 text-sm font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition">
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-pink-100 rounded-full">
+        <i data-lucide="atom" class="w-5 h-5 text-pink-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Applied Sciences</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-green-100 rounded-full">
+        <i data-lucide="globe" class="w-5 h-5 text-green-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Hospitality</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-yellow-100 rounded-full">
+        <i data-lucide="briefcase" class="w-5 h-5 text-yellow-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Business</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-purple-100 rounded-full">
+        <i data-lucide="badge-percent" class="w-5 h-5 text-purple-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Polytechnic</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-blue-100 rounded-full">
+        <i data-lucide="book-open" class="w-5 h-5 text-blue-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Liberal Education</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-lime-100 rounded-full">
+        <i data-lucide="heart-pulse" class="w-5 h-5 text-lime-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Allied Health</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-orange-100 rounded-full">
+        <i data-lucide="paintbrush" class="w-5 h-5 text-orange-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Fine Arts</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-rose-100 rounded-full">
+        <i data-lucide="drama" class="w-5 h-5 text-rose-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Performing Arts</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-teal-100 rounded-full">
+        <i data-lucide="leaf" class="w-5 h-5 text-teal-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Agriculture</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-red-100 rounded-full">
+        <i data-lucide="stethoscope" class="w-5 h-5 text-red-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Nursing</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-emerald-100 rounded-full">
+        <i data-lucide="brain" class="w-5 h-5 text-emerald-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Psychology</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-fuchsia-100 rounded-full">
+        <i data-lucide="scale" class="w-5 h-5 text-fuchsia-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Law</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-sky-100 rounded-full">
+        <i data-lucide="user-cog" class="w-5 h-5 text-sky-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Social Work</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-zinc-100 rounded-full">
+        <i data-lucide="glasses" class="w-5 h-5 text-zinc-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Education</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-amber-100 rounded-full">
+        <i data-lucide="ruler" class="w-5 h-5 text-amber-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Architecture</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-indigo-200 rounded-full">
+        <i data-lucide="cross" class="w-5 h-5 text-indigo-600"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Theology</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-gray-200 rounded-full">
+        <i data-lucide="newspaper" class="w-5 h-5 text-gray-700"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Journalism</span>
+    </div>
+    <div class="flex items-center gap-3 px-4 py-2 rounded-xl bg-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+      <div class="p-2 bg-blue-200 rounded-full">
+        <i data-lucide="plane" class="w-5 h-5 text-blue-700"></i>
+      </div>
+      <span class="text-sm font-semibold text-gray-800">Aviation</span>
+    </div>
+  </div>
+  <div class="text-center">
+    <a href="courses.html" class="inline-block px-6 py-3 text-sm font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition">
         View All Courses
-      </a>
-    </div>
+    </a>
   </div>
-  <!-- Dashboard Section -->
+</div>
+
+<!-- Dashboard Section -->
 <section id="dashboards" class="py-20 bg-gray-100">
   <div class="max-w-6xl mx-auto px-6 text-center">
     <h2 class="text-3xl font-bold text-blue-700 mb-6">Dashboards</h2>
@@ -643,13 +617,13 @@ function startJourney() {
       <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition" data-aos="fade-up">
         <h3 class="text-xl font-semibold mb-2 text-blue-800">Student Dashboard</h3>
         <p class="mb-4 text-gray-600">Access your scholarship applications, documents, and progress tracking.</p>
-        <a href="https://jaquest.online/student-dashboard" target="_blank" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Dashboard</a>
+        <a href="https://jaquest.online/student-dashboard" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Dashboard</a>
       </div>
       <!-- Admin Dashboard -->
       <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
         <h3 class="text-xl font-semibold mb-2 text-blue-800">Admin Dashboard</h3>
         <p class="mb-4 text-gray-600">Manage student records, applications, and review statuses.</p>
-        <a href="https://jaquest.online/admin-dashboard" target="_blank" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Admin</a>
+        <a href="https://jaquest.online/admin-dashboard" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Go to Admin</a>
       </div>
     </div>
   </div>
@@ -711,68 +685,66 @@ function startJourney() {
     </div>
   </div>
 </section>
-  <!-- Mission Statement Section -->
-  <section class="bg-white py-20 px-6 md:px-16" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
-      <!-- Updated image layout -->
-      <div class="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-        <!-- Large image on the left -->
-        <div class="lg:col-span-2">
-          <img src="student.jpg" class="rounded-custom w-full h-full object-cover" alt="Students Group">
-        </div>
-        <!-- Two vertical images on the right -->
-        <div class="flex flex-col gap-6 justify-between lg:col-span-1">
-          <img src="student1.jpg" class="rounded-custom w-full h-1/2 object-cover" alt="Students Learning">
-          <img src="student2.jpg" class="rounded-custom w-full h-1/2 object-cover" alt="Students Collaborating">
-        </div>
+<!-- Mission Statement Section -->
+<section class="bg-white py-20 px-6 md:px-16" data-aos="fade-up">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
+    <!-- Updated image layout -->
+    <div class="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+      <!-- Large image on the left -->
+      <div class="lg:col-span-2">
+        <img src="student.jpg" class="rounded-custom w-full h-full object-cover" alt="Students Group" />
       </div>
-
-      <div class="flex-1 mt-10 lg:mt-0">
-        <span class="inline-flex items-center px-4 py-1 text-sm rounded-full bg-cyan-800 text-white mb-4">
-          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 1010 10A10 10 0 0012 2z" />
-          </svg>
-          What is our concern
-        </span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-snug">We Care About Your Life For Better Future</h2>
-        <p class="text-gray-700 mb-8">This includes offering personalized feedback, fostering a sense of community through discussion forums and group projects, and providing continuous support to address challenges and improve our students' standards.</p>
-        <div class="grid gap-6">
-          <div class="flex gap-4 items-start bg-gray-100 rounded-lg p-5">
-            <div class="bg-gray-200 p-3 rounded-full">
-              <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z" />
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-lg font-semibold mb-1">Mastering students interests</h4>
-              <p class="text-gray-600">We help students identify their strengths and career goals, guiding them toward the best academic and scholarship opportunities for success.</p>
-            </div>
+      <!-- Two vertical images on the right -->
+      <div class="flex flex-col gap-6 justify-between lg:col-span-1">
+        <img src="student1.jpg" class="rounded-custom w-full h-1/2 object-cover" alt="Students Learning" />
+        <img src="student2.jpg" class="rounded-custom w-full h-1/2 object-cover" alt="Students Collaborating" />
+      </div>
+    </div>
+    <div class="flex-1 mt-10 lg:mt-0">
+      <span class="inline-flex items-center px-4 py-1 text-sm rounded-full bg-cyan-800 text-white mb-4">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 1010 10A10 10 0 0012 2z" />
+        </svg>
+        What is our concern
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-snug">We Care About Your Life For Better Future</h2>
+      <p class="text-gray-700 mb-8">This includes offering personalized feedback, fostering a sense of community through discussion forums and group projects, and providing continuous support to address challenges and improve our students' standards.</p>
+      <div class="grid gap-6">
+        <div class="flex gap-4 items-start bg-gray-100 rounded-lg p-5">
+          <div class="bg-gray-200 p-3 rounded-full">
+            <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z" />
+            </svg>
           </div>
-          <div class="flex gap-4 items-start bg-gray-100 rounded-lg p-5">
-            <div class="bg-gray-200 p-3 rounded-full">
-              <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-lg font-semibold mb-1">Course mapping</h4>
-              <p class="text-gray-600">We help you select the ideal course based on your academic background, career goals, and industry trends, ensuring alignment with your future path.</p>
-            </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-1">Mastering students interests</h4>
+            <p class="text-gray-600">We help students identify their strengths and career goals, guiding them toward the best academic and scholarship opportunities for success.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start bg-gray-100 rounded-lg p-5">
+          <div class="bg-gray-200 p-3 rounded-full">
+            <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-1">Course mapping</h4>
+            <p class="text-gray-600">We help you select the ideal course based on your academic background, career goals, and industry trends, ensuring alignment with your future path.</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
+  </div>
+</section>
 <!-- AOS Library (for animations) -->
 <script>
   AOS.init({ duration: 1000, once: true });
 </script>
-  <!-- Chat Button -->
+<!-- Chat Button -->
 <button onclick="toggleChat()" 
   class="fixed top-1/2 right-4 transform -translate-y-1/2 z-[9999]
          bg-blue-600 hover:bg-blue-700 text-white p-3 md:p-4 
-         rounded-full shadow-lg transition transform hover:scale-105 
+         rounded-full shadow-lg transition hover:scale-105 
          focus:outline-none focus:ring-4 focus:ring-blue-300 animate-bounce"
   aria-label="Open Chat">
   <i data-lucide="message-circle" class="w-5 h-5 md:w-6 md:h-6"></i>
@@ -786,8 +758,9 @@ function startJourney() {
          translate-x-full opacity-0 pointer-events-none">
   <div class="flex items-center justify-between p-4 bg-blue-600 text-white">
     <span class="font-semibold text-sm md:text-base">JaQuest Chat Assistant</span>
-    <button onclick="toggleChat()" class="hover:text-gray-200 focus:outline-none">
-      <i data-lucide="x" class="w-4 h-4 md:w-5 md:h-5"></i>
+    <button type="button" onclick="toggleChat()" class="hover:text-gray-200 focus:outline-none">
+      <span class="sr-only">Close chat</span>
+      <i data-lucide="x" class="w-4 h-4 md:w-5 md:h-5" aria-hidden="true"></i>
     </button>
   </div>
   <iframe src="https://example.com/chatbot" title="Chatbot" 
@@ -803,29 +776,24 @@ function startJourney() {
     Latest News Updates
   </h2>
 </section>
-
 <section
   class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-16 pb-20"
   data-aos="fade-up"
-  data-aos-duration="1200"
->
+  data-aos-duration="1200">
   <!-- Card 1 -->
   <div
-    class="relative overflow-hidden rounded-2xl shadow-lg group transition-all duration-300"
-  >
+    class="relative overflow-hidden rounded-2xl shadow-lg group transition-all duration-300">
     <img
       src="student3.jpg"
       alt="Student Achievement"
-      class="w-full h-96 sm:h-[26rem] object-cover"
-    />
+      class="w-full h-96 sm:h-[26rem] object-cover"/>
     <div
       class="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50"
     ></div>
     <div class="absolute top-5 left-5">
       <span
         class="bg-white text-cyan-600 font-semibold px-4 py-2 rounded-full text-sm"
-        >DEVELOPMENT</span
-      >
+        >DEVELOPMENT</span>
     </div>
     <div class="absolute bottom-5 left-5 right-5 text-white">
       <h3 class="text-2xl font-semibold leading-snug">
@@ -845,13 +813,11 @@ function startJourney() {
   </div>
   <!-- Card 2 -->
   <div
-    class="relative overflow-hidden rounded-2xl shadow-lg group transition-all duration-300"
-  >
+    class="relative overflow-hidden rounded-2xl shadow-lg group transition-all duration-300">
     <img
       src="student2.jpg"
       alt="Arts Integration"
-      class="w-full h-96 sm:h-[26rem] object-cover"
-    />
+      class="w-full h-96 sm:h-[26rem] object-cover"/>
     <div
       class="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50"
     ></div>
@@ -878,33 +844,18 @@ function startJourney() {
   </div>
 </section>
 <!-- Scroll to Top Button - Left Center -->
-<a
-  href="#top"
+<a href="#top"
   class="fixed left-3 top-1/2 transform -translate-y-1/2 bg-cyan-600 hover:bg-cyan-700 text-white p-3 rounded-full shadow-lg z-50 transition-all animate-pulse"
-  title="Back to Top"
->
+  title="Back to Top">
   <i data-feather="arrow-up" class="w-5 h-5"></i>
 </a>
 <script src="https://unpkg.com/feather-icons"></script>
 <script>
-  AOS.init();
-  feather.replace();
-</script>
-<!-- Footer -->
-<footer class="bg-gray-900 text-gray-400 pt-10 pb-[90px] text-center text-sm" data-aos="fade-up">
-  <div class="flex justify-center gap-6 mb-4">
-    <a href="https://facebook.com/jaquest" target="_blank" class="hover:text-white transition">Facebook</a>
-    <a href="https://twitter.com/jaquest" target="_blank" class="hover:text-white transition">Twitter</a>
-    <a href="https://instagram.com/jaquest" target="_blank" class="hover:text-white transition">Instagram</a>
-  </div>
-  <p>&copy; JaQuest Scholarship Agency. All rights reserved.</p>
-</footer>
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  AOS.init({ duration: 1000, once: true });
-  lucide.createIcons();
+  // Only run AOS and feather.replace once
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.AOS) AOS.init({ duration: 1000, once: true });
+    if (window.feather) feather.replace();
+  });
   function toggleChat() {
     const chat = document.getElementById('chatContainer');
     if (chat.classList.contains('translate-x-full')) {
@@ -915,34 +866,34 @@ function startJourney() {
       chat.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
     }
   }
-playBtn.addEventListener('click', () => {
-  // Hide the thumbnail and play button
-  videoThumb.classList.add('hidden');
-  playBtn.classList.add('hidden');
-  
-  // Show the video and play it
-  videoElement.classList.remove('hidden');
-  videoElement.play();
-});
 </script>
- <script>
-  AOS.init({
-    once: true,
-    duration: 800,
-    easing: 'ease-in-out'
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  // Only run lucide.createIcons if lucide is loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.lucide) lucide.createIcons();
   });
 </script>
-  <script>
-    document.getElementById("playBtn").addEventListener("click", function () {
-      const video = document.getElementById("videoElement");
-      const thumbnail = document.getElementById("videoThumb");
-      this.style.display = "none";
-      thumbnail.style.display = "none";
-      video.classList.remove("hidden");
-      video.play();
-    });
-  </script> 
- <!-- Fixed Transparent Blue Bottom Navbar -->
+<script>
+  // Only run if playBtn exists on the page
+  document.addEventListener("DOMContentLoaded", function () {
+    const playBtn = document.getElementById("playBtn");
+    if (playBtn) {
+      playBtn.addEventListener("click", function () {
+        const video = document.getElementById("videoElement");
+        const thumbnail = document.getElementById("videoThumb");
+        this.style.display = "none";
+        if (thumbnail) thumbnail.style.display = "none";
+        if (video) {
+          video.classList.remove("hidden");
+          video.play();
+        }
+      });
+    }
+  });
+</script>
+<!-- Fixed Transparent Blue Bottom Navbar -->
 <nav class="fixed bottom-0 left-0 right-0 bg-blue-900 bg-opacity-70 backdrop-blur-md z-50">
   <div class="flex justify-around items-center py-3 text-white text-xs sm:text-sm">
     <a href="index.html" class="flex flex-col items-center">
@@ -981,14 +932,15 @@ playBtn.addEventListener('click', () => {
 <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-500">
   <div id="modalContent" class="bg-white rounded-2xl overflow-hidden max-w-2xl w-full relative shadow-2xl transform scale-90 opacity-0 transition-all duration-500">
     <!-- Close Button -->
-    <button onclick="closeVideoModal()" class="absolute top-2 right-2 bg-gray-100 rounded-full p-2 hover:bg-gray-200 z-10">
-      <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+    <button type="button" onclick="closeVideoModal()" class="absolute top-2 right-2 bg-gray-100 rounded-full p-2 hover:bg-gray-200 z-10" aria-label="Close video modal">
+      <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 
         1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 
         1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 
         10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
       </svg>
     </button>
+    <!-- ...rest of modal... -->
     <!-- Video tag instead of iframe -->
     <div class="aspect-w-16 aspect-h-9">
       <video id="videoPlayer" src="deshbaghat.mp4" controls class="w-full h-full rounded-b-2xl"></video>
@@ -1024,116 +976,124 @@ playBtn.addEventListener('click', () => {
     }, 300);
   }
 </script>
-  <script>
- <script>
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const testimonials = document.querySelector('.testimonial-slider');
-  const totalSlides = document.querySelectorAll('.testimonial').length;
-  let currentIndex = 0;
-  function updateSlider() {
-    const offset = -currentIndex * 100; // Adjust for one slide at a time
-    testimonials.style.transition = 'transform 0.5s ease';
-    testimonials.style.transform = `translateX(${offset}%)`;
-  }
-  prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-    } else {
-      currentIndex = totalSlides - 1; // Go to last testimonial if at the beginning
-    }
-    updateSlider();
-  });
-  nextBtn.addEventListener('click', () => {
-    if (currentIndex < totalSlides - 1) {
-      currentIndex++;
-    } else {
-      currentIndex = 0; // Go to first testimonial if at the end
-    }
-    updateSlider();
-  });
-  // For Touch Devices (Swiper)
-  let touchStart = 0;
-  testimonials.addEventListener('touchstart', (e) => {
-    touchStart = e.touches[0].clientX;
-  });
-  testimonials.addEventListener('touchend', (e) => {
-    let touchEnd = e.changedTouches[0].clientX;
-    if (touchStart - touchEnd > 50) {
-      nextBtn.click();
-    } else if (touchEnd - touchStart > 50) {
-      prevBtn.click();
+<script>
+  // Testimonial slider navigation (safe for missing elements)
+  document.addEventListener('DOMContentLoaded', function () {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const testimonials = document.querySelector('.testimonial-slider');
+    const testimonialItems = document.querySelectorAll('.testimonial');
+    if (prevBtn && nextBtn && testimonials && testimonialItems.length > 0) {
+      const totalSlides = testimonialItems.length;
+      let currentIndex = 0;
+      function updateSlider() {
+        const offset = -currentIndex * 100;
+        testimonials.style.transition = 'transform 0.5s ease';
+        testimonials.style.transform = `translateX(${offset}%)`;
+      }
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          currentIndex = totalSlides - 1;
+        }
+        updateSlider();
+      });
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < totalSlides - 1) {
+          currentIndex++;
+        } else {
+          currentIndex = 0;
+        }
+        updateSlider();
+      });
+      // For Touch Devices (Swiper)
+      let touchStart = 0;
+      testimonials.addEventListener('touchstart', (e) => {
+        touchStart = e.touches[0].clientX;
+      });
+      testimonials.addEventListener('touchend', (e) => {
+        let touchEnd = e.changedTouches[0].clientX;
+        if (touchStart - touchEnd > 50) {
+          nextBtn.click();
+        } else if (touchEnd - touchStart > 50) {
+          prevBtn.click();
+        }
+      });
     }
   });
 </script>
-  <script>
-  var swiper = new Swiper(".mySwiper", {
-    loop: true,
-    grabCursor: true,
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-      },
-      640: {
-        slidesPerView: 1,
-      },
-      768: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
-    },
+<script>
+  // Swiper initialization (safe for missing Swiper)
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.Swiper) {
+      var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        grabCursor: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        },
+      });
+    }
   });
 </script>
- <script>
-  const countEl = document.getElementById('animated-count');
-  const start = 700;
-  const end = 755;
-  const duration = 2000; // 3 seconds
-  const step = Math.max(Math.floor(duration / (end - start)), 20);
-
-  let interval;
-
-  function animateCount() {
-    let current = start;
-    clearInterval(interval); // Reset if already running
-    interval = setInterval(() => {
-      current++;
-      countEl.textContent = current + '+';
-      if (current >= end) {
-        clearInterval(interval);
-      }
-    }, step);
-  }
-
-  // Observer that triggers every time it's in view
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCount();
-      }
-    });
-  }, { threshold: 0.5 }); // Trigger when 50% of element is in view
-
-  observer.observe(countEl);
+<script>
+  // Animated count-up (safe for missing element)
+  document.addEventListener('DOMContentLoaded', function () {
+    const countEl = document.getElementById('animated-count');
+    const start = 700;
+    const end = 755;
+    const duration = 2000;
+    const step = Math.max(Math.floor(duration / (end - start)), 20);
+    let interval;
+    function animateCount() {
+      let current = start;
+      clearInterval(interval);
+      interval = setInterval(() => {
+        current++;
+        countEl.textContent = current + '+';
+        if (current >= end) {
+          clearInterval(interval);
+        }
+      }, step);
+    }
+    if (countEl) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCount();
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(countEl);
+    }
+  });
 </script>
 </body>
 </html>
-
-
 
