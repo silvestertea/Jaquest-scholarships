@@ -104,7 +104,136 @@ body {
   50% {
     transform: translateY(-30px);
   }
-}
+   .jaquest-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .jaquest-left,
+    .jaquest-right {
+      flex: 1 1 300px;
+      max-width: 550px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .jaquest-images {
+      display: flex;
+      gap: 1rem;
+    }
+    .jaquest-image {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+    }
+    .jaquest-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .jaquest-image-left {
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .jaquest-image-right {
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .jaquest-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: black;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .jaquest-play:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .jaquest-support {
+      background-color: #00a79d;
+      color: white;
+      padding: 1rem;
+      border-radius: 0 50px 50px 0;
+      max-width: 550px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .support-icon {
+      background: white;
+      color: #00a79d;
+      border-radius: 50%;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+    .support-text {
+      line-height: 1.2;
+    }
+    .support-text strong {
+      font-size: 1.2rem;
+    }
+    .jaquest-right h2 {
+      font-size: 2rem;
+      color: #222;
+    }
+    .jaquest-right p {
+      color: #555;
+      line-height: 1.6;
+    }
+    .jaquest-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .jaquest-stat {
+      text-align: center;
+    }
+    .jaquest-stat .number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00a79d;
+    }
+    @media (max-width: 768px) {
+      .jaquest-images {
+        flex-direction: column;
+      }
+      .jaquest-image-left,
+      .jaquest-image-right {
+        border-radius: 15px;
+      }
+      .jaquest-stats {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .jaquest-left,
+      .jaquest-right {
+        max-width: 100%;
+      }
+    }
 </style>
 <!-- Navbar -->
 <nav class="fixed top-0 left-0 w-full bg-blue-600 text-white shadow-md z-50">
@@ -271,6 +400,52 @@ body {
       class="h-20 w-20 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-44 lg:w-44 object-contain transition-transform hover:scale-110 drop-shadow-2xl">
   </div>
 </div>
+
+<!--you can remove this -->
+  <div class="jaquest-container">
+    <!-- Left Column -->
+    <div class="jaquest-left">
+      <div class="jaquest-images">
+        <!-- Left Image with Play Button -->
+        <div class="jaquest-image jaquest-image-left">
+          <img src="https://images.pexels.com/photos/7092494/pexels-photo-7092494.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Students group" />
+          <a href="https://youtu.be/Oj-DQkARTgM?si=tCquai4TG8jw29Qc" target="_blank" class="jaquest-play" aria-label="Watch Video">▶</a>
+        </div>
+        <!-- Right Image -->
+        <div class="jaquest-image jaquest-image-right">
+          <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Classroom" />
+        </div>
+      </div>
+      <!-- Support Box -->
+      <div class="jaquest-support">
+        <div class="support-icon" aria-hidden="true">📞</div>
+        <div class="support-text">
+          ONLINE SUPPORT <br />
+          <strong>+256777617256</strong>
+        </div>
+      </div>
+    </div>
+    <!-- Right Column -->
+    <div class="jaquest-right">
+      <h2>
+        Years of dedication to helping students turn their dreams into reality.
+      </h2>
+      <p>
+        At JaQuest Scholarships Agency, we are dedicated to guiding students and professionals through the process of studying abroad. With expertise in university admissions, visa applications, scholarships, and career guidance, we ensure a smooth journey toward achieving your educational and career goals.
+      </p>
+      <div class="jaquest-stats">
+        <div class="jaquest-stat">
+          <div class="number">81+</div>
+          <div>Total active students helped by JaQuest</div>
+        </div>
+        <div class="jaquest-stat">
+          <div class="number">75+</div>
+          <div>Graduated students under JaQuest</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Section: Why Choose JAQuest -->
 <section class="py-16 bg-[#f5deb3] text-gray-800">
