@@ -328,59 +328,8 @@ body {
     </div>
   </div>
 </section>
-<!-- Button -->
-<a href="javascript:void(0)" onclick="startJourney()" 
-  class="mt-6 inline-block bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-700 transition duration-300">
-  Start Your Journey
-</a>
-<!-- Loading Screen -->
-<div id="loadingScreen" class="fixed inset-0 bg-white bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-6 hidden transition-opacity duration-300">
-  <img src="jaquestlogo.jpg" alt="JAQuest Logo" class="w-24 h-24 object-contain animate-spin-slow" />
-  <div class="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-  <p class="text-gray-700 text-lg font-medium">Preparing your journey...</p>
-</div>
-<!-- Script -->
-<script>
-function startJourney() {
-  const loader = document.getElementById("loadingScreen");
-  loader.classList.remove("hidden");
-  loader.classList.add("opacity-0");
-  setTimeout(() => loader.classList.remove("opacity-0"), 50);
-  setTimeout(() => {
-    window.location.href = "form.html";
-  }, 1200);
-}
-</script>
-<style>
-.animate-spin-slow {
-  animation: spin 2s linear infinite;
-}
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-</style>
-<!-- Video Play Button Script -->
-<script>
-  // Only run if playBtn exists on the page
-  const playBtn = document.getElementById("playBtn");
-  if (playBtn) {
-    playBtn.addEventListener("click", function () {
-      const video = document.getElementById("videoElement");
-      const thumbnail = document.getElementById("videoThumb");
-      this.style.display = "none";
-      if (thumbnail) thumbnail.style.display = "none";
-      if (video) {
-        video.classList.remove("hidden");
-        video.play();
-      }
-    });
-  }
-</script>
-<!-- Swiper CSS (should be in <head>, but left here if needed for context) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
-<section style="font-family: Arial, sans-serif; background: #fff; padding: 2rem;">
+  <section style="font-family: Arial, sans-serif; background: #fff; padding: 2rem;">
 <style>
   .jaquest-container {
     display: flex;
@@ -584,7 +533,57 @@ function startJourney() {
 </div>
 </section>
 
-  
+<!-- Button -->
+<a href="javascript:void(0)" onclick="startJourney()" 
+  class="mt-6 inline-block bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-indigo-700 transition duration-300">
+  Start Your Journey
+</a>
+<!-- Loading Screen -->
+<div id="loadingScreen" class="fixed inset-0 bg-white bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-6 hidden transition-opacity duration-300">
+  <img src="jaquestlogo.jpg" alt="JAQuest Logo" class="w-24 h-24 object-contain animate-spin-slow" />
+  <div class="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+  <p class="text-gray-700 text-lg font-medium">Preparing your journey...</p>
+</div>
+<!-- Script -->
+<script>
+function startJourney() {
+  const loader = document.getElementById("loadingScreen");
+  loader.classList.remove("hidden");
+  loader.classList.add("opacity-0");
+  setTimeout(() => loader.classList.remove("opacity-0"), 50);
+  setTimeout(() => {
+    window.location.href = "form.html";
+  }, 1200);
+}
+</script>
+<style>
+.animate-spin-slow {
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+</style>
+<!-- Video Play Button Script -->
+<script>
+  // Only run if playBtn exists on the page
+  const playBtn = document.getElementById("playBtn");
+  if (playBtn) {
+    playBtn.addEventListener("click", function () {
+      const video = document.getElementById("videoElement");
+      const thumbnail = document.getElementById("videoThumb");
+      this.style.display = "none";
+      if (thumbnail) thumbnail.style.display = "none";
+      if (video) {
+        video.classList.remove("hidden");
+        video.play();
+      }
+    });
+  }
+</script>
+<!-- Swiper CSS (should be in <head>, but left here if needed for context) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <section class="py-16 bg-gray-50" id="testimonials" data-aos="fade-up" data-aos-duration="1200">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-12">What Our Students Say</h2>
